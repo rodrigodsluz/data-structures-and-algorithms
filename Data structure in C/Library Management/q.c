@@ -31,7 +31,7 @@ int main(){
         printf("\t\t* * * * * * * * * * * * * * * * * * * *\n");
         printf("\t\t*    Gerenciamento de biblioteca      *\n");
         printf("\t\t* * * * * * * * * * * * * * * * * * * *\n");
-        printf("\t\t*           Menu de Op%c%ces          *\n");
+        printf("\t\t*           Menu de Opções            *\n");
         printf("\t\t* * * * * * * * * * * * * * * * * * * *\n");
         printf("\t\t* [1] Cadastrar usuário               *\n");
         printf("\t\t* [2] Cadastrar livros                *\n");
