@@ -65,26 +65,36 @@ struct ALUNO* studentArray(int n){
 }
 
 void fillStudentArray(int n, struct ALUNO* V){
+	
 	for(int i=0; i<n; i++){
 		printf("What is your registration number? ");
 		scanf("%d", &(V+i)->matricula);	
 		printf("What's your name? ");
 		scanf(" %[^\n]", &(V+i)->nome);
-		/*
-		char nome[50];
-		int dia_nasc;
-		int mes_nasc;
-		int ano_nasc;
-		float nota;	*/
+		printf("When you were born?\n");
+		printf("Day: ");
+		scanf("%d", &(V+i)->dia_nasc);
+		printf("Month: ");
+		scanf("%d", &(V+i)->mes_nasc);
+		printf("Year: ");
+		scanf("%d", &(V+i)->ano_nasc);
+		printf("What grade did you get on the test? ");
+		scanf("%f", &(V+i)->nota);
+		
 	}
 }
 
 void printStudentArray(int n, struct ALUNO* V){
+	
 	for(int i=0; i<n; i++){
-		printf("Registration number: ");
-		printf("%d \n", (V+i)->matricula);
-		printf("Name: ");
-		printf("%s \n", (V+i)->nome);
+		printf("Registration number: %d \n", (V+i)->matricula);
+	
+		printf("Name: %s \n", (V+i)->nome);
+		
+		printf("Date of birth: %d/%d/%d \n", (V+i)->dia_nasc, (V+i)->mes_nasc, (V+i)->ano_nasc);
+		
+		printf("Grade: %.2f \n", (V+i)->nota);
+		
 	}
 }
 
