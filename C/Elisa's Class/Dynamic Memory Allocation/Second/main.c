@@ -34,6 +34,8 @@ struct ALUNO* studentArray(int n);
 
 void fillStudentArray(int n, struct ALUNO* V);
 
+void printStudentArray(int n, struct ALUNO* V);
+
 int main(){
 	int n;
 	printf("How many students do you want to register? ");
@@ -44,17 +46,48 @@ int main(){
 	
 	fillStudentArray(n, V);
 	
+	printf("The student record is:\n");
+	printStudentArray(n, V);
+	
 	return 0;
 }
 
 struct ALUNO* studentArray(int n){
 	struct ALUNO* V;
-	V = (int*)malloc(n*sizeof(int));
+	V = (struct ALUNO*)malloc(n*sizeof(struct ALUNO));
+	
+	if(V == NULL){
+		printf("Insufficient memory!");
+		return NULL;
+	}
 	
 	return V;
 }
 
 void fillStudentArray(int n, struct ALUNO* V){
-	printf("What is your registration number? ");
-	
+	for(int i=0; i<n; i++){
+		printf("What is your registration number? ");
+		scanf("%d", &(V+i)->matricula);	
+		printf("What's your name? ");
+		scanf(" %[^\n]", &(V+i)->nome);
+		/*
+		char nome[50];
+		int dia_nasc;
+		int mes_nasc;
+		int ano_nasc;
+		float nota;	*/
+	}
 }
+
+void printStudentArray(int n, struct ALUNO* V){
+	for(int i=0; i<n; i++){
+		printf("Registration number: ");
+		printf("%d \n", (V+i)->matricula);
+		printf("Name: ");
+		printf("%s \n", (V+i)->nome);
+	}
+}
+
+
+
+	
