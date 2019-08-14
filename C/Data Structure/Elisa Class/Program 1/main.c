@@ -33,13 +33,13 @@ int main(){
 	
 	v = arrayAllocation(l, c);
 	
-	printf("Enter the elements of array:\n");
+	printf("Enter the values of array:\n");
 	fillArray(l, c, v);
    
-	printf("The numbers in array are: ");
+	printf("The values in array are: ");
 	printArray(l, c, v);
 	
-	//Array 2D allocation
+	//2D array allocation
 	int **M;
 	
 	M = matrixAllocation(l, c);
@@ -55,12 +55,13 @@ int main(){
 	return 0;
 }
 
+//Array allocation
 int *arrayAllocation(int l, int c){
 	int *v;
 	v = (int*)malloc((l*c)*sizeof(int));
 	
 	if(v == NULL){ 
-		printf("Error");
+		printf("insufficient memory!");
 		return NULL;
    }
    
@@ -80,13 +81,14 @@ void printArray(int l, int c, int *v){
 	printf("\n");
 }
 
+//2D array allocation
 int **matrixAllocation(int l, int c){
 	int **M;
 		
 	M = (int**)malloc(l*sizeof(int*));
 	
 	if(M == NULL){ 
-		printf("Error!");
+		printf("insufficient memory!");
 		return NULL;
    }
    
@@ -95,7 +97,7 @@ int **matrixAllocation(int l, int c){
 		M[i] = (int*) malloc(c * sizeof(int));
     
 		if(M[i] == NULL){ 
-			printf("Error!");
+			printf("insufficient memory!");
 			return NULL;
 		}
 	}
