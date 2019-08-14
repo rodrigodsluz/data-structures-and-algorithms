@@ -47,8 +47,10 @@ void printStudentRecord(int n, struct ALUNO* V);
 
 int main(){
 	int n;
-	printf("How many students do you want to register? ");
-	scanf("%d", &n);
+	do{
+		printf("How many students do you want to register? ");
+		scanf("%d", &n);
+	}while(!(n>0));
 	
 	//(a) Alocar memória dinamicamente para um vetor do tipo ALUNO.
 	struct ALUNO *V;
@@ -108,19 +110,31 @@ void fillStudentRecord(int n, struct ALUNO* V){
 		printf("Student [%d]\n", i+1);
 		printf("Name: %s\n", (V+i)->nome);
 		
-		printf("Registration number: ");
-		scanf("%d", &(V+i)->matricula);	
+		do{
+			printf("Registration number: ");
+			scanf("%d", &(V+i)->matricula);	
+		}while(!((V+i)->matricula >0));
 		
 		printf("When he or she was born?\n");
-		printf("Day: ");
-		scanf("%d", &(V+i)->dia_nasc);
-		printf("Month: ");
-		scanf("%d", &(V+i)->mes_nasc);
-		printf("Year: ");
-		scanf("%d", &(V+i)->ano_nasc);
+		do{
+			printf("Day: ");
+			scanf("%d", &(V+i)->dia_nasc);
+		}while(!((V+i)->dia_nasc>=1 && (V+i)->dia_nasc <=31));
 		
-		printf("What grade did he or she get on the test? ");
-		scanf("%f", &(V+i)->nota);
+		do{
+			printf("Month: ");
+			scanf("%d", &(V+i)->mes_nasc);
+		}while(!((V+i)->mes_nasc>=1 && (V+i)->mes_nasc<=12));
+		
+		do{
+			printf("Year: ");
+			scanf("%d", &(V+i)->ano_nasc);
+		}while(!((V+i)->ano_nasc>=1940 && (V+i)->ano_nasc<=2017));
+		
+		do{
+			printf("What grade did he or she get on the test? ");
+			scanf("%f", &(V+i)->nota);
+		}while(!((V+i)->nota>=0 && (V+i)->nota <=10));
 		
 	}
 	
@@ -131,6 +145,8 @@ void printStudentRecord(int n, struct ALUNO* V){
 	printf("The approved students are: \n");
 	for(int i=0; i<n; i++){
 		if((V+i)->nota>=6){
+			printf("Student [%d]\n", i+1);
+			
 			printf("Name: %s \n", (V+i)->nome);
 		
 			printf("Registration number: %d \n", (V+i)->matricula);
