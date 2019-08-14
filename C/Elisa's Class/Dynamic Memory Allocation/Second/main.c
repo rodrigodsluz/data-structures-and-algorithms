@@ -21,7 +21,7 @@ criadas funções para:
 #include <stdio.h>
 #include <stdlib.h>
 
-struct aluno{
+struct ALUNO{
 	int matricula;
 	char nome[50];
 	int dia_nasc;
@@ -30,9 +30,31 @@ struct aluno{
     float nota;	
 };
 
+struct ALUNO* studentArray(int n);
+
+void fillStudentArray(int n, struct ALUNO* V);
+
 int main(){
+	int n;
+	printf("How many students do you want to register? ");
+	scanf("%d", &n);
 	
+	struct ALUNO *V;
+	V = studentArray(n);
+	
+	fillStudentArray(n, V);
 	
 	return 0;
 }
 
+struct ALUNO* studentArray(int n){
+	struct ALUNO* V;
+	V = (int*)malloc(n*sizeof(int));
+	
+	return V;
+}
+
+void fillStudentArray(int n, struct ALUNO* V){
+	printf("What is your registration number? ");
+	
+}
