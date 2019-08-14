@@ -23,6 +23,8 @@ void printMatrix(int l, int c, int **M);
 
 int main(){
 	int l, c;
+	
+	//Array allocation
 	int *v;
 	printf("Enter the number of rows: ");
 	scanf("%d", &l);
@@ -37,7 +39,7 @@ int main(){
 	printf("The numbers in array are: ");
 	printArray(l, c, v);
 	
-	
+	//Array 2D allocation
 	int **M;
 	
 	M = matrixAllocation(l, c);
@@ -47,7 +49,8 @@ int main(){
 	printf("The values in matrix are:\n");
 	printMatrix(l, c, M);
 	
-	
+	free(v);
+	free(*M);
 	
 	return 0;
 }
@@ -100,7 +103,7 @@ int **matrixAllocation(int l, int c){
 	return M;
 }
 void fillMatrix(int l, int c, int **M, int *v){
-	int x=0;
+	//int x=0;
 	for(int i=0; i<l; i++){
 		for(int j=0; j<c; j++){
       
