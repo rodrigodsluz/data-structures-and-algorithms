@@ -12,44 +12,53 @@ chamadas de funções:
 #include <stdio.h>
 #include <stdlib.h>
 
+//Array allocation
 int *arrayAllocation(int l, int c);
-void fillArray(int l, int c, int *v);
-void printArray(int l, int c, int *v);
+//To fill array
+void fillArray(int l, int c, int *V);
+//Print array
+void printArray(int l, int c, int *V);
 
+//2D array allocation
 int **matrixAllocation(int l, int c);
-void fillMatrix(int l, int c, int **M, int *v);
+//To fill 2D array
+void fillMatrix(int l, int c, int **M, int *V);
+///Print 2D array
 void printMatrix(int l, int c, int **M);
 
 
 int main(){
 	int l, c;
-	
-	//Array allocation
-	int *v;
 	printf("Enter the number of rows: ");
 	scanf("%d", &l);
 	printf("Enter the number of columns: ");
 	scanf("%d", &c);
 	
-	v = arrayAllocation(l, c);
+	//Array allocation
+	int *V;
+	V = arrayAllocation(l, c);
 	
+	//To fill array
 	printf("Enter the values of array:\n");
-	fillArray(l, c, v);
+	fillArray(l, c, V);
    
-	printf("The values in array are: ");
-	printArray(l, c, v);
+	//Print array
+	printf("The values in array are:\n");
+	printArray(l, c, V);
 	
 	//2D array allocation
 	int **M;
-	
 	M = matrixAllocation(l, c);
 	
-	fillMatrix(l, c, M, v);
+	//To fill 2D array
+	fillMatrix(l, c, M, V);
 	
+	///Print 2D array
 	printf("The values in matrix are:\n");
 	printMatrix(l, c, M);
 	
-	free(v);
+	//Deallocates both
+	free(V);
 	free(*M);
 	
 	return 0;
@@ -57,38 +66,39 @@ int main(){
 
 //Array allocation
 int *arrayAllocation(int l, int c){
-	int *v;
-	v = (int*)malloc((l*c)*sizeof(int));
+	int *V;
+	V = (int*)malloc((l*c)*sizeof(int));
 	
-	if(v == NULL){ 
-		printf("insufficient memory!");
+	if(V == NULL){ 
+		printf("Insufficient memory!");
 		return NULL;
    }
    
-   return v;
+   return V;
 }
 
-void fillArray(int l, int c, int *v){
+//To fill array
+void fillArray(int l, int c, int *V){
 	for(int i=0; i<l*c; i++){
-		scanf("%d", &v[i]);		
+		scanf("%d", &V[i]);		
 	}
 }
 
-void printArray(int l, int c, int *v){
+//Print array
+void printArray(int l, int c, int *V){
 	for(int i=0; i<l*c; i++){
-		printf("%d ", v[i]);		
+		printf("%d ", V[i]);		
 	}
 	printf("\n");
 }
 
 //2D array allocation
 int **matrixAllocation(int l, int c){
-	int **M;
-		
+	int **M;	
 	M = (int**)malloc(l*sizeof(int*));
 	
 	if(M == NULL){ 
-		printf("insufficient memory!");
+		printf("Insufficient memory!");
 		return NULL;
    }
    
@@ -97,28 +107,32 @@ int **matrixAllocation(int l, int c){
 		M[i] = (int*) malloc(c * sizeof(int));
     
 		if(M[i] == NULL){ 
-			printf("insufficient memory!");
+			printf("Insufficient memory!");
 			return NULL;
 		}
 	}
 	
 	return M;
 }
-void fillMatrix(int l, int c, int **M, int *v){
+
+//To fill 2D array
+void fillMatrix(int l, int c, int **M, int *V){
 	//int x=0;
 	for(int i=0; i<l; i++){
 		for(int j=0; j<c; j++){
       
-      M[i][j] = v[i*c+j];
+      M[i][j] = V[i*c+j];
 	  //M[i][j] = v[x];
 	  //x++;
 		}
     }
 }
+
+///Print 2D array
 void printMatrix(int l, int c, int **M){
 	for(int i=0; i<l; i++){
 		for(int j=0; j<c; j++){
-			printf("%d", M[i][j]);
+			printf("%d ", M[i][j]);
 		}
 		printf("\n");
 	}
