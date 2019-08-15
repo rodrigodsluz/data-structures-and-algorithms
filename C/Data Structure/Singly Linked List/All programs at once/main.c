@@ -27,6 +27,9 @@ struct node* DeleteFromEnd(struct node* head);
 //[7] - Delete at nth position
 struct node* DeleteAtNthPosition(struct node* head, int p);
 
+//[8] - Reverse a linked list - Iterative Method\n");
+struct node* reverseIterativeMethod(struct node* head);
+
 int main(){
 	struct node* head = NULL;
 	
@@ -84,6 +87,10 @@ int main(){
 	printf("[7] - Delete at nth position: ");
 	PrintForward(head);
 	*/
+	
+	printf("[8] - Reverse a linked list - Iterative Method\n");
+	head = reverseIterativeMethod(head);
+	printReverse(head);
 	
 	//
 	
@@ -214,6 +221,22 @@ struct node* DeleteAtNthPosition(struct node* head, int p){
 		temp1->next = temp2->next;
 		free(temp2);
 	}
+	
+	return head;
+}
+
+//[8] - Reverse a linked list - Iterative Method\n");
+struct node* reverseIterativeMethod(struct node* head){
+	struct node *prev, *current, *next;
+	current = head;
+	prev = NULL;
+	while(current!=NULL){
+		next = current->next;
+		current->next = prev;
+		prev = current;
+		current = next;
+	}
+	head = prev;
 	
 	return head;
 }
