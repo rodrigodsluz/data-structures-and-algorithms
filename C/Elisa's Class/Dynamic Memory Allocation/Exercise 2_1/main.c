@@ -68,6 +68,9 @@ int main(){
 	//(e) Imprimir o registro de um aluno.
 	printStudentRecord(n, V);
 	
+	//Deallocate array
+	free(V);
+	
 	return 0;
 }
 
