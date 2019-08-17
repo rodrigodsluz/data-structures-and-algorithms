@@ -30,6 +30,13 @@ struct node* DeleteAtNthPosition(struct node* head, int p);
 //[8] - Reverse a linked list - Iterative Method\n");
 struct node* reverseIterativeMethod(struct node* head);
 
+//[9] - Lenght of linked list
+int length(struct node *head);
+
+//[10] - Reverse Print
+void printReverse(struct node *head);
+
+
 int main(){
 	struct node* head = NULL;
 	
@@ -88,9 +95,18 @@ int main(){
 	PrintForward(head);
 	*/
 	
-	printf("[8] - Reverse a linked list - Iterative Method\n");
+	/*
+	printf("[8] - Reverse a linked list - Iterative Method:\n");
 	head = reverseIterativeMethod(head);
+	
+	printf("Print forward: ");
+	PrintForward(head);
+		
+	//[9] - Length
+	
+	printf("[10] - Reverse print:\n");
 	printReverse(head);
+	*/
 	
 	//
 	
@@ -239,4 +255,37 @@ struct node* reverseIterativeMethod(struct node* head){
 	head = prev;
 	
 	return head;
+}
+
+//[9] - Lenght of linked list
+int length(struct node* head){
+	int length=0;
+	while(head!=NULL){
+		length++;
+		head = head->next;
+	}
+	
+	return length;
+}
+
+//[10] - Reverse Print
+void printReverse(struct node *head){	
+	//int length = length(head);
+	int j = 0; 
+    struct node *current = head; 
+    while (current != NULL) { 
+  
+        // For each node, print proper number 
+        // of spaces before printing it 
+        for (int i = 0; i < (length(head) - j); i++){
+            printf(" "); 
+		}			
+  
+        // use of carriage return to move back 
+        // and print. 
+        printf("%d\r", current->data); // \r
+  
+        current = current->next; 
+        j++; 
+    } 
 }
