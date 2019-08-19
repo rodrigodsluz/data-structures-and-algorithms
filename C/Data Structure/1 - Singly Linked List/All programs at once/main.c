@@ -36,6 +36,14 @@ int length(struct node *head);
 //[10] - Reverse Print
 void printReverse(struct node *head);
 
+//[11] - Recursive Insert
+struct node* recursiveInsert(struct node* head, int x);
+
+//[12] - Recursive print
+void recursivePrint(struct node* head);
+
+//[13] - Recursive revert
+struct node* recursiveRevert(struct node* head);
 
 int main(){
 	struct node* head = NULL;
@@ -51,15 +59,17 @@ int main(){
 		
 		//head = InsertAtHead(head, x);
 		
-		head = InsertAtTail(head, x);
+		//head = InsertAtTail(head, x);
+		
+		head = recursiveInsert(head, x);
 		
 	}
 	
 	//printf("[2] - Insert at beginning: ");
 	//PrintForward(head);
 	
-	printf("[3] - Insert at tail: ");
-	PrintForward(head);
+	//printf("[3] - Insert at tail: ");
+	//PrintForward(head);
 	
 	/*//[4] - Insert at nth position
 	printf("How many values of nodes do you want change? ");
@@ -108,7 +118,15 @@ int main(){
 	printReverse(head);
 	*/
 	
-	//
+	printf("[11] - Recursive Insert: ");
+	PrintForward(head);
+	
+	printf("[12] - Recursive print: ");
+	recursivePrint(head);
+	
+	printf("Recursive reverse: ");
+	head = recursiveRevert(head);
+	recursivePrint(head);
 	
 	return 0;
 }
@@ -288,4 +306,46 @@ void printReverse(struct node *head){
         current = current->next; 
         j++; 
     } 
+}
+
+//[11] - Recursive Insert
+struct node* recursiveInsert(struct node* head, int x){
+	
+	if(head==NULL){
+		head = (struct node*)malloc(sizeof(struct node));
+		
+		head->data = x;
+	
+		head->next = NULL;
+	}else{
+		head->next = recursiveInsert(head->next, x);
+	}
+	
+	return head;
+}
+
+//[12] - Recursive print
+void recursivePrint(struct node* head){
+	if(head==NULL){ 
+		printf("\n");
+	}else{
+		printf("%d ", head->data); 
+		recursivePrint(head->next);
+	}
+}
+
+//[13] - Recursive revert
+struct node* recursiveRevert(struct node* head){
+	struct node* temp = head;
+	if(temp->next==NULL){
+		head = temp;
+	}else{
+		head = RecursiveReverse(temp->next);
+		//temp->next->next = temp;
+		struct node* q = temp->next;
+		q->next = temp;
+		temp->next = NULL;
+	}
+	
+	return head;
 }
