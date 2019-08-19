@@ -36,14 +36,20 @@ int length(struct node *head);
 //[10] - Reverse Print
 void printReverse(struct node *head);
 
-//[11] - Recursive Insert
+//[11] - Recursive Insert at end
 struct node* recursiveInsert(struct node* head, int x);
 
 //[12] - Recursive print
 void recursivePrint(struct node* head);
 
-//[13] - Recursive revert
-struct node* recursiveRevert(struct node* head);
+//[13] - Recursive reverse
+struct node* recursiveReverse(struct node* head);
+
+//[14] - Recursive print reverse
+void recursivePrintReverse(struct node* head);
+
+//[15] - Sorting Linked List
+struct node* sortLinkedList(struct node* head);
 
 int main(){
 	struct node* head = NULL;
@@ -61,7 +67,9 @@ int main(){
 		
 		//head = InsertAtTail(head, x);
 		
-		head = recursiveInsert(head, x);
+		//head = recursiveInsert(head, x);
+		
+		head = sortInsert(head, x);
 		
 	}
 	
@@ -118,15 +126,27 @@ int main(){
 	printReverse(head);
 	*/
 	
-	printf("[11] - Recursive Insert: ");
+	/*
+	printf("[11] - Recursive Insert at end: ");
 	PrintForward(head);
 	
 	printf("[12] - Recursive print: ");
 	recursivePrint(head);
 	
-	printf("Recursive reverse: ");
-	head = recursiveRevert(head);
+	printf("[13] - Recursive reverse: ");
+	head = recursiveReverse(head);
 	recursivePrint(head);
+	
+	printf("[14] - Recursive print reverse: ");
+	recursivePrintReverse(head);
+	*/
+	
+	//printf("[15] - Sorting a Linked List: ");
+	//head = sortLinkedList(head);
+	//PrintForward(head);
+	
+	printf("[16] - Sorting insert: ");
+	PrintForward(head);
 	
 	return 0;
 }
@@ -308,7 +328,7 @@ void printReverse(struct node *head){
     } 
 }
 
-//[11] - Recursive Insert
+//[11] - Recursive Insert at end
 struct node* recursiveInsert(struct node* head, int x){
 	
 	if(head==NULL){
@@ -334,18 +354,72 @@ void recursivePrint(struct node* head){
 	}
 }
 
-//[13] - Recursive revert
-struct node* recursiveRevert(struct node* head){
+//[13] - Recursive reverse
+struct node* recursiveReverse(struct node* head){
 	struct node* temp = head;
 	if(temp->next==NULL){
 		head = temp;
 	}else{
-		head = RecursiveReverse(temp->next);
+		head = recursiveReverse(temp->next);
 		//temp->next->next = temp;
 		struct node* q = temp->next;
 		q->next = temp;
 		temp->next = NULL;
 	}
+	
+	return head;
+}
+
+//[14] - Recursive print reverse
+void recursivePrintReverse(struct node* head){
+	if(head==NULL){ 
+		printf("");
+	}else{
+		recursivePrintReverse(head->next); 
+		printf("%d ", head->data); 
+	}
+}
+
+//[15] - Sorting Linked List
+struct node* sortLinkedList(struct node* head){
+	struct node *temp1,*temp2,*min,*prev,*q;
+	
+	q = NULL;
+	
+	while(head != NULL){
+		prev = NULL;
+		min = temp1 = head;
+		temp2 = head -> next;
+		
+		while ( temp2 != NULL ){
+			if(min -> data > temp2 -> data){
+				min = temp2;
+				prev = temp1;
+			}
+			
+			temp1 = temp2;
+			temp2 = temp2-> next;
+		}
+		
+		if(prev == NULL){
+			head = min -> next;
+		}else{
+			prev -> next = min -> next;
+		}
+		
+		min -> next = NULL;
+		
+		if( q == NULL){
+			q = min;
+		}else{
+			temp1 = q;	
+			while( temp1 -> next != NULL){
+				temp1 = temp1 -> next;
+			}
+			temp1 -> next = min;
+		}
+	}
+	return q;
 	
 	return head;
 }
