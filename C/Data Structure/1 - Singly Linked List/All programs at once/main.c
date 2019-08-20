@@ -51,6 +51,9 @@ void recursivePrintReverse(struct node* head);
 //[15] - Sorting Linked List
 struct node* sortLinkedList(struct node* head);
 
+//[16] - Sort insert
+struct node* sortInsert(struct node* head, int x);
+
 int main(){
 	struct node* head = NULL;
 	
@@ -63,13 +66,14 @@ int main(){
 		printf("Enter the value: ");
 		scanf("%d", &x);
 		
+		 /*Hello, you need to choose what to do*/
+		 
 		//head = InsertAtHead(head, x);
 		
 		//head = InsertAtTail(head, x);
 		
 		//head = recursiveInsert(head, x);
 		
-		head = sortInsert(head, x);
 		
 	}
 	
@@ -126,27 +130,32 @@ int main(){
 	printReverse(head);
 	*/
 	
-	/*
-	printf("[11] - Recursive Insert at end: ");
-	PrintForward(head);
 	
-	printf("[12] - Recursive print: ");
-	recursivePrint(head);
-	
-	printf("[13] - Recursive reverse: ");
-	head = recursiveReverse(head);
-	recursivePrint(head);
-	
-	printf("[14] - Recursive print reverse: ");
-	recursivePrintReverse(head);
-	*/
-	
-	//printf("[15] - Sorting a Linked List: ");
-	//head = sortLinkedList(head);
+	//printf("[11] - Recursive Insert at end: ");
 	//PrintForward(head);
 	
-	printf("[16] - Sorting insert: ");
+	//printf("[12] - Recursive print: ");
+	//recursivePrint(head);
+	
+	//printf("[13] - Recursive reverse: ");
+	//head = recursiveReverse(head);
+	//recursivePrint(head);
+	
+	//printf("[14] - Recursive print reverse: ");
+	//recursivePrintReverse(head);
+	
+	/*
+	printf("[15] - Sorting a Linked List: ");
+	head = sortLinkedList(head);
 	PrintForward(head);
+	
+	
+	printf("[16] - Sorting insert: ");
+	printf("Enter the value to be inserted: ");
+	scanf("%d",&x);
+	head = sortInsert(head, x);
+	PrintForward(head);
+	*/
 	
 	return 0;
 }
@@ -420,6 +429,41 @@ struct node* sortLinkedList(struct node* head){
 		}
 	}
 	return q;
+	
+	return head;
+}
+
+//[16] - Sort insert
+struct node* sortInsert(struct node* head, int x){
+	
+	//INSERTING A NEW NODE IN A SORTED LIST
+/* a function to insert a node with data value n in a sorted list
+pointed to by head*/
+	
+	struct node* new_node =(struct node*) malloc(sizeof(struct node)); 
+	/* put in the data  */
+    new_node->data  = x; 
+    new_node->next =  NULL; 
+	
+	struct node* current; 
+    /* Special case for the head end */
+    if (head == NULL || head->data >= new_node->data) 
+    { 
+        new_node->next = head; 
+        head = new_node; 
+    } 
+    else
+    { 
+        /* Locate the node before the point of insertion */
+        current = head; 
+        while (current->next!=NULL && 
+               current->next->data < new_node->data) 
+        { 
+            current = current->next; 
+        } 
+        new_node->next = current->next; 
+        current->next = new_node; 
+    } 
 	
 	return head;
 }
