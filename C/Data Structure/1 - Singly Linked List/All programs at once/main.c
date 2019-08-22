@@ -74,6 +74,8 @@ int main(){
 		
 		//head = recursiveInsert(head, x);
 		
+		//head = sortInsert(head, x);
+		
 		
 	}
 	
