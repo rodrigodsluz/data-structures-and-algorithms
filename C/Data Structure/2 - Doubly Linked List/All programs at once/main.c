@@ -71,4 +71,4 @@ node *insertAtBeginning(node *head, int x){
 
 	return head;
 }
-	//You need to test with number 0 and put the error if the memory is insufficient
+	//You need to test with number 0 and put the error if the memory is insufficient and try to do by using recursion
