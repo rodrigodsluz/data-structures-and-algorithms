@@ -9,6 +9,7 @@ memória alocada pela função auxiliar.
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 int *reverso(int n, int *v);
 
@@ -34,6 +35,22 @@ int main(){
 }
 
 int *reverso(int n, int *v){
+	//Optimized code by Leal
+	int aux = 0;                                                                                                                                                                                  
+    int retirar = n-1;
+    
+    for(int j = 0; j < floor(n/2); j++){
+        aux = v[j];
+        v[j] = v[retirar];
+        v[retirar] = aux;
+        retirar--;
+        
+    }
+    
+    return v;
+	
+	//Normal code
+	/*
 	int *array = (int*)malloc(n*sizeof(int));
 	int j;
 	for(int i=(n-1), j=0; i>=0; i--, j++){
@@ -41,4 +58,5 @@ int *reverso(int n, int *v){
 	}
 		
 	return array;
+	*/
 }
