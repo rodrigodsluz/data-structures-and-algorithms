@@ -1,4 +1,4 @@
 
-# C Repository!
+#Code repository for C programming language!
 
 
