@@ -21,7 +21,7 @@ Escreva uma função main para testar as funções implementadas.
 
 float **cria(int n);
 
-void atribui(int i, int j, float **m, int n);
+void atribui(int i, int j, int x, float **m, int n);
 
 int main(){
 	int n;
@@ -31,10 +31,11 @@ int main(){
 	float **m = cria(n);
 	
 	printf("Enter the values:\n");
+	int x;
 	for(int i=0; i<n; i++){
 		for(int j=0; j<n; j++){
-			scanf("%f ", &m[i][j]);
-			atribui(i, j, m, n);
+			scanf("%f ", &x);
+			atribui(i, j, x, m, n);
 		}
 	}
 	
@@ -72,8 +73,8 @@ float **cria(int n){
 	
 }
 
-void atribui(int i, int j, float **m, int n){
+void atribui(int i, int j, int x, float **m, int n){
 	if(i>=j){
-		m[i][j-i] = m[i][j];
+		m[i][j-i] = x;
 	}
 }
