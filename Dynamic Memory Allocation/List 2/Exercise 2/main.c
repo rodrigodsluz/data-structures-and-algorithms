@@ -40,7 +40,7 @@ int main(){
 	float x;
 	for(int i=0; i<n; i++){
 		for(int j=0; j<n; j++){
-			scanf("%f ", &x);
+			scanf("%f", &x);
 			atribui(i, j, x, m, n);
 		}
 	}
@@ -73,8 +73,18 @@ int main(){
 float **cria(int n){
 	float **m = (float**)calloc(n, sizeof(float*));
 	
+	if(m == NULL){ 
+		printf("Insufficient memory!");
+		return NULL;
+	}
+   
 	for(int i=0; i<n; i++){
 		m[i] = (float*)calloc((n-i), sizeof(float));
+		
+		if(m[i] == NULL){ 
+			printf("Insufficient memory!");
+			return NULL;
+		}
 	}
 	
 	return m;
