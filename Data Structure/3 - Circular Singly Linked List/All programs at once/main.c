@@ -7,10 +7,17 @@ typedef struct node{
 }node;
 
 //[0] - Allocate node
-node *allocateNode(node *head, int x);
+node *allocateNode(node *front, int x);
+
+//[1] - Print circular singly linked list
+void printForward(node *front, node *rear);
+
+//[2] - insert at beginning
+node *insertAtBeginning(node *front, node *rear, int x);
 
 int main(){
-	node *head = NULL;
+	node *front = NULL;
+	node *rear = NULL;
 	
 	int n, x;
 	do{
@@ -22,21 +29,54 @@ int main(){
 		printf("Enter the values: ");
 		scanf("%d", &x);
 		
-		head = insertAtBeginning(head, x);
+		//[2] - insert at beginning
+		front = insertAtBeginning(front, rear, x);
 		
 	}
+	
+	//[1] - Print circular singly linked list
+	printForward(front, rear);
 	
 	return 0;
 }
 
 //[0] - Allocate node
-node *allocateNode(node *head, int x){
+node *allocateNode(node *front, int x){
 	node *newNode = (node*)malloc(sizeof(node));
-	if(node==NULL){
+	if(newNode==NULL){
 		printf("Insufficient memory!");
 	}
 	newNode->data = x;
 	newNode->next = NULL;
 	
 	return newNode;
+}
+
+//[1] - Print circular singly linked list
+void printForward(node *front, node *rear){
+	if(front==NULL){
+		printf("Empty.");
+	}else{
+		while(front!=rear){
+			printf("%d ", front->data);
+			front = front->next;
+		}
+		
+	}
+	
+}
+
+//[2] - insert at beginning
+node *insertAtBeginning(node *front, node *rear, int x){
+	node *newNode = allocateNode(front, x);
+	if(rear==NULL){
+		front=rear=newNode;
+	}else{
+		rear->next=newNode;
+		rear=newNode;
+	}
+	
+	rear->next=front;
+	
+	return front;
 }
