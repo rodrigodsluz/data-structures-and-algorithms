@@ -1,5 +1,15 @@
-typedef struct complexNumber ComplexNumber;
+typedef struct ponto Ponto;
 
-ComplexNumber *allocateMemory();
+Ponto *pontoCriar(double x, double y);
 
-ComplexNumber *createComplexNumber(ComplexNumber *n);
+Ponto *add(Ponto *r, Ponto *s);
+
+Ponto *subtraction(Ponto *r, Ponto *s);
+
+Ponto *multiplication(Ponto *r, Ponto *s);
+
+Ponto *division(Ponto *r, Ponto *s);
+
+void print(Ponto *p);
+
+void freeComplexNumber(Ponto *p);

@@ -2,30 +2,44 @@
 #include <stdlib.h>
 #include "adt.h"
 
-struct complexNumber{
+struct ponto{
 	double x;
 	double y;
 };
 
-ComplexNumber *allocateMemory(){
-	ComplexNumber *new = (ComplexNumber*)malloc(sizeof(ComplexNumber));
-	if(new==NULL){
-		printf("Insufficient memory");
-	}
-	
-	return new;
+Ponto* pontoCriar(double x, double y)
+{
+  Ponto* p = (Ponto*) malloc(sizeof(Ponto));
+
+  if(p != NULL){
+    p->x = x;
+    p->y = y;
+  }
+  
+  return p;
 }
 
-//(a) Função para criar um número complexo, dados a e b.
-ComplexNumber *createComplexNumber(ComplexNumber *n){
-	printf("Enter a and b where a + bi is the first complex number.");
-    printf("\na = ");
-    scanf("%lf", &n->x);
-    printf("b = ");
-    scanf("%lf", &n->y);
-	
-	printf("The created complex number is: ");
-	printf("a + bi = %.2lf + %.2lfi", n->x, n->y);
+Ponto *add(Ponto *r, Ponto *s){
+    return pontoCriar(r->x + s->x, r->y + s->y);
+  
+}
 
-	return n;
+Ponto *subtraction(Ponto *r, Ponto *s){
+    return pontoCriar(r->x - s->x, r->y - s->y);
+}
+
+Ponto *multiplication(Ponto *r, Ponto *s){
+    return pontoCriar(((r->x * s->x) - (r->y * s->y)), ((r->y * s->x) + (r->x * s->y)));
+}
+
+Ponto *division(Ponto *r, Ponto *s){
+    return pontoCriar(((r->x * s->x) + (r->y * s->y)) / (((s->x)*(s->x)) + ((s->y) * (s->y))), ((r->y * s->x) - (r->x * s->y)) / (((s->x) * (s->x)) + (s->y) * (s->y)));
+}
+
+void print(Ponto *p){
+    printf("a + bi = %.2lf + %.2lfi\n", p->x, p->y);
+}
+
+void freeComplexNumber(Ponto *p){
+    free(p);
 }

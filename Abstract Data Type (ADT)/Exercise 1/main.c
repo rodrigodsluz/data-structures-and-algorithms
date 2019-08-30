@@ -1,37 +1,52 @@
-/*
-1. Implemente uma TAD para representar números complexos. Sabe-se que um número complexo
-é representado por a + bi, onde a e b são números reais e i a unidade imaginária. O TAD deve
-implementar as seguintes operações:
-(a) Função para criar um número complexo, dados a e b.
-(b) Função para liberar um número complexo previamente criado.
-(c) Função para somar dois números complexos, retornando um novo número com o resultado
-da operação. Sabe-se que
-		(a + bi) + (c + di) = (a + c) + (b + d)i (1)
-(d) Função para subtrair dois números complexos, retornando um novo número com o resul-
-tado da operação. Sabe-se que
-		(a + bi) 􀀀 (c + di) = (a 􀀀 c) + (b 􀀀 d)i (2)
-(e) Função para multiplicar dois números complexos, retornando um novo número com o
-resultado da operação. Sabe-se que
-		(a + bi)(c + di) = (ac 􀀀 bd) + (bc + ad)i (3)
-(f) Função para dividir dois números complexos, retornando um novo número com o resultado
-da operação. Sabe-se que
-		(a + bi)=(c + di) = ((ac + bd)=(c2 + d2)) + ((bc 􀀀 ad)=(c2 + d2))i (4)
-Escreva uma função main que use números complexos para testar as funções implementadas.
-(Sugestão: criar dois números complexos, executar todas as operações (+, -, *, /), imprimir
-os resultados e liberar a memória.)
-*/
 #include <stdio.h>
 #include <stdlib.h>
 #include "adt.h"
 
 int main(){
-	ComplexNumber *n = allocateMemory();
-	
-	ComplexNumber *create = createComplexNumber(n);
-	
-	 
-	
-	
-	
+    
+    double a, b;
+    Ponto *p, *q, *sum, *sub, *mul, *div;
+    
+    // lê valores a e b do numero p
+    printf("Enter a and b where a + bi is the first complex number.");
+    printf("\na = ");
+    scanf("%lf", &a);
+    printf("b = ");
+    scanf("%lf", &b);
+    
+    // criar o número complexo p
+    p = pontoCriar(a, b);
+    
+    // lê valores a e b do numero q 
+    printf("Enter a and b where a + bi is the first complex number.");
+    printf("\na = ");
+    scanf("%lf", &a);
+    printf("b = ");
+    scanf("%lf", &b);
+
+    // criar o número complexo p
+    q = pontoCriar(a, b);
+    
+    // soma dois numeros complexos
+	sum = add(p, q);
+    printf("The sum is: ");
+    print(sum);
+
+    sub = subtraction(p, q);
+    printf("The subtraction is: ");
+    print(sub);
+
+    mul = multiplication(p, q);
+    printf("The multiplication is: ");
+    print(mul);
+
+    div = division(p, q);
+    printf("The division is: ");
+    print(div);
+
+    //(b) Função para liberar um número complexo previamente criado.
+    freeComplexNumber(p);
+    freeComplexNumber(q);
+  
 	return 0;
 }
