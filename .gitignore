@@ -1,4 +1,4 @@
 *.exe
 *.txt
 *.ini
-*.vscode
+/.vscode
