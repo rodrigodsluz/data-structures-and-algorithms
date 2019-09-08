@@ -17,8 +17,8 @@ int main(){
         printf("\n4 - Insert at end");
         printf("\n5 - Insert in a sorted list");
         printf("\n6 - Delete from beginning");
-        printf("\n7 - Remover elemento do final");
-        printf("\n8 - Remover elemento (qualquer)");
+        printf("\n7 - Delete from end");
+        printf("\n8 - Delete nth position");
         printf("\n9 - Buscar elemento pela posição");
         printf("\n10 - Buscar elemento pelo dado");
         printf("\n11 - Imprimir lista");
@@ -94,34 +94,30 @@ int main(){
                     printf("\n Error!");
                 }
                 break;
+
+            case 7:
+                ok = deletionFromEnd(li);
+
+                if(ok){
+                    printf("\n Successful deletion!");
+                }else{
+                    printf("\n Error!");
+                }
+                break;
+
+            case 8:
+                printf("\n Enter the value to be removed: ");
+                scanf("%d", &data);
+
+                ok = deleteNthPosition(li, data);
+
+                if(ok){
+                    printf("\n Successful deletion!");
+                }else{
+                    printf("\n Error!");
+                }
+                break;
 /*
-      case 7:
-
-        // remover elemento do final
-        ok = remover_lista_final(li);
-
-        if(ok == 1){
-          printf("\n Remoção realizada com sucesso!");
-        }else{
-          printf("\n Falha na remoção!");
-        }
-        break;
-
-      case 8:
-
-        // remover elemento do meio
-        printf("\n Código do produto a ser removido: ");
-        scanf("%d", &dado);
-
-        ok = remover_lista_meio(li, dado);
-
-        if(ok == 1){
-          printf("\n Remoção realizada com sucesso!");
-        }else{
-          printf("\n Falha na remoção!");
-        }
-        break;
-
 
       case 9:
 

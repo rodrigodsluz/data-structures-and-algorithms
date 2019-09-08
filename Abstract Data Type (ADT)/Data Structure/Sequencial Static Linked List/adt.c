@@ -133,12 +133,8 @@ int deleteFromBeginning(List *li){
         return 0;
     }
 
-    for(int i=0; i< li->amount; i++){   //You have to decide
-        li->array[i-1] = li->array[i]; 
-    }
-
     for(int i=0; i< li->amount-1; i++){
-        i->dados[i] = li->dados[i+1];
+        li->array[i] = li->array[i+1];
     }
 
     li->amount--;
@@ -146,3 +142,17 @@ int deleteFromBeginning(List *li){
     return 1;
 }
 
+int deletionFromEnd(List *li){
+    if(li==NULL){
+        return 0;
+    }
+
+    if(listIsEmpty(li)){
+        return 0;
+    }
+
+   //Only this is enough
+    li->amount--;
+
+    return 1;
+}

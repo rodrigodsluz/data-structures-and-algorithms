@@ -23,6 +23,8 @@ int insertSortedList(List *li, int data);
 
 int deleteFromBeginning(List *li);
 
+int deletionFromEnd(List *li);
+
 
 
 #endif
