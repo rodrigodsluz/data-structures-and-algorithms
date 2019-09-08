@@ -14,9 +14,9 @@ int main(){
         printf("\n1 - Create List");
         printf("\n2 - Free List");
         printf("\n3 - Insert at beginning");
-        printf("\n4 - Inserir elemento no final");
-        printf("\n5 - Inserir elemento (ordenado)");
-        printf("\n6 - Remover elemento do início");
+        printf("\n4 - Insert at end");
+        printf("\n5 - Insert in a sorted list");
+        printf("\n6 - Delete from beginning");
         printf("\n7 - Remover elemento do final");
         printf("\n8 - Remover elemento (qualquer)");
         printf("\n9 - Buscar elemento pela posição");
@@ -61,46 +61,40 @@ int main(){
 
                 break;
 
-             /*case 4:
+            case 4:
+                ok = createData(&data);
+                ok = insertAtEnd(li, data);
 
-                // inserir elemento no final
-                ok = criar_dado(&dado);
-                ok = inserir_lista_final(li, produto);
+                if(ok){
+                    printf("\n Successful insertion!");
+                }else{
+                    printf("\n Error!");
+                }
 
-        if(ok == 1){
-          printf("\n Inserção realizada com sucesso!");
-        }else{
-          printf("\n Falha na inserção!");
-        }
+                break;
 
-        break;
+            case 5:
+                ok = createData(&data);
+                ok = insertSortedList(li, data);
 
-      case 5:
+                if(ok){
+                    printf("\n Successful insertion!");
+                }else{
+                    printf("\n Error!");
+                }
 
-        // inserir elemento de forma ordenada
-        ok = criar_dado(&dado);
-        ok = inserir_lista_ordenada(li, produto);
+                break;
 
-        if(ok == 1){
-          printf("\n Inserção realizada com sucesso!");
-        }else{
-          printf("\n Falha na inserção!");
-        }
+            case 6:
+                ok = deleteFromBeginning(li);
 
-        break;
-
-      case 6:
-
-        // remover elemento do início
-        ok = remover_lista_inicio(li);
-
-        if(ok == 1){
-          printf("\n Remoção realizada com sucesso!");
-        }else{
-          printf("\n Falha na remoção!");
-        }
-        break;
-
+                if(ok){
+                    printf("\n Successful deletion!");
+                }else{
+                    printf("\n Error!");
+                }
+                break;
+/*
       case 7:
 
         // remover elemento do final

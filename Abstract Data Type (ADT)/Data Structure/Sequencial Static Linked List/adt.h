@@ -17,10 +17,11 @@ int printList(List *li);
 
 int insertAtBeginning(List *li, int data);
 
+int insertAtEnd(List *li, int data);
 
-//int insertAtEnd(List *li, int x);
+int insertSortedList(List *li, int data);
 
-//int listIsFull(List *li);
+int deleteFromBeginning(List *li);
 
 
 

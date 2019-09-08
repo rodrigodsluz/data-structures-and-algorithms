@@ -83,6 +83,66 @@ int insertAtBeginning(List *li, int data){
     return 1;
 }
 
+int insertAtEnd(List *li, int data){
+    if(li==NULL){
+        return 0;
+    }
 
+    if(listIsFull(li)){
+        return 0;
+    }
 
+    li->array[li->amount] = data;
+    li->amount++;
+
+    return 1;
+}
+
+int insertSortedList(List *li, int data){
+    if(li == NULL){
+        return 0;
+    }
+
+    if(listIsFull(li)){
+        return 0;
+    }
+
+    li->array[li->amount] = data;
+    li->amount++;
+
+    int temp = 0 ;
+    for(int i=0; i<li->amount; i++){
+        for(int j=i+1; j<li->amount; j++){
+            if(li->array[j] < li->array[i]){
+                temp = li->array[i];
+                li->array[i] = li->array[j];
+                li->array[j] = temp;
+            }
+        }
+    }
+
+    return 1;
+}
+
+int deleteFromBeginning(List *li){
+    if(li == NULL){
+        return 0;
+    }
+
+    if(listIsEmpty(li)){
+        return 0;
+    }
+
+    for(int i=0; i< li->amount; i++){   //You have to decide
+        li->array[i-1] = li->array[i]; 
+    }
+
+    for(int i=0; i< li->amount-1; i++){
+        i->dados[i] = li->dados[i+1];
+    }
+
+    li->amount--;
+
+    return 1;
+}
 
