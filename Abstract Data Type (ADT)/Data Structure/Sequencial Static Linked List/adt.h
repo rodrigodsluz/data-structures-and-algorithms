@@ -25,6 +25,8 @@ int deleteFromBeginning(List *li);
 
 int deletionFromEnd(List *li);
 
+int deleteNthPosition(List *li, int data);
+
 
 
 #endif

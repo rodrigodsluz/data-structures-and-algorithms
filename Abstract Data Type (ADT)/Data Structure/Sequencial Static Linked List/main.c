@@ -18,7 +18,7 @@ int main(){
         printf("\n5 - Insert in a sorted list");
         printf("\n6 - Delete from beginning");
         printf("\n7 - Delete from end");
-        printf("\n8 - Delete nth position");
+        printf("\n8 - Delete element by value");
         printf("\n9 - Buscar elemento pela posição");
         printf("\n10 - Buscar elemento pelo dado");
         printf("\n11 - Imprimir lista");
@@ -117,26 +117,23 @@ int main(){
                     printf("\n Error!");
                 }
                 break;
+
+            case 9:
+                printf("\n Type the element position to be searched: ");
+                scanf("%d", &pos);
+
+                //data = searchElementByPosition(li, pos);
 /*
-
-      case 9:
-
-        // busca elemento pela posicao
-        printf("\n Posição do elemento a ser buscado: ");
-        scanf("%d", &pos);
-
-        produto = buscar_lista_posicao(li, pos);
-
-        if(produto != NULL){
-          printf("\n Busca realizada com sucesso!");
-          printf("\n Elemento da %dª posição: ");
-          imprimir_produto(produto);
-        }else{
-          printf("\n Posição não existe!");
-        }
-
-        break;
-
+                if(data != NULL){
+                    printf("\n Successful search!");
+                    printf("\n Element of %dth position is: ");
+                    printf("%d", data);
+                }else{
+                    printf("\n This position doesn't exist!");
+                }
+*/
+                break;
+/*
       case 10:
 
         // busca elemento pelo dado

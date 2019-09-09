@@ -120,7 +120,17 @@ int insertSortedList(List *li, int data){
             }
         }
     }
+    /*
+    int k,i = 0;
+    while(i<li->qtd && li->dados[i].matricula < al.matricula)
+        i++;
 
+    for(k=li->qtd-1; k >= i; k--)
+        li->dados[k+1] = li->dados[k];
+
+    li->dados[i] = al;
+    li->qtd++;
+    */
     return 1;
 }
 
@@ -154,5 +164,43 @@ int deletionFromEnd(List *li){
    //Only this is enough
     li->amount--;
 
+    return 1;
+}
+
+int deleteNthPosition(List *li, int data){
+    if(li==NULL){
+        return 0;
+    }
+
+    if(listIsEmpty(li)){
+        return 0;
+    }
+
+    int j = 0;
+    while(j<li->amount && li->array[j] != data)
+        j++;
+
+    if(j == li->amount)
+        return 0;
+
+    for(int i=j; i< li->amount-1; i++)
+        li->array[i] = li->array[i+1];
+    
+
+    li->amount --;
+
+    /*
+    //Optimized
+    int i = 0;
+    while(i<li->qtd && li->dados[i].matricula != mat)
+        i++;
+    if(i == li->qtd)
+        return 0;
+
+    li->qtd--;
+    li->dados[i] = li->dados[li->qtd];
+    //
+    */
+   
     return 1;
 }
