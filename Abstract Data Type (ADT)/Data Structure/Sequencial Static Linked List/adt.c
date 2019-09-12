@@ -107,8 +107,10 @@ int insertSortedList(List *li, int data){
         return 0;
     }
 
+    /*
     li->array[li->amount] = data;
     li->amount++;
+    */
 
     int temp = 0 ;
     for(int i=0; i<li->amount; i++){
@@ -120,17 +122,18 @@ int insertSortedList(List *li, int data){
             }
         }
     }
-    /*
-    int k,i = 0;
-    while(i<li->qtd && li->dados[i].matricula < al.matricula)
-        i++;
+    
 
-    for(k=li->qtd-1; k >= i; k--)
-        li->dados[k+1] = li->dados[k];
+    int j = 0;
+    while(j<li->amount && li->array[j] < data)
+        j++;
 
-    li->dados[i] = al;
-    li->qtd++;
-    */
+    for(int i=li->amount-1; i >= j; i--)
+        li->array[i+1] = li->array[i];
+
+    li->array[j] = data;
+    li->amount++;
+    
     return 1;
 }
 
@@ -202,5 +205,35 @@ int deleteNthPosition(List *li, int data){
     //
     */
    
+    return 1;
+}
+
+int searchElementByPosition(List *li, int pos, int *data){
+    if(li==NULL|| listIsEmpty(li) || pos < 0 ||  pos > li->amount-1){
+        return 0;
+    }
+
+    *data = li->array[pos];
+
+    return 1;
+
+}
+
+int searchElementByValue(List *li, int data, int *pos){
+    if(li==NULL|| listIsEmpty(li)){
+        return 0;
+    }
+
+    int j=0;
+    while(j<li->amount && li->array[j] != data){
+        j++;
+    }
+
+    if(j == li->amount){
+        return 0;
+    }
+
+    *pos = j;
+
     return 1;
 }

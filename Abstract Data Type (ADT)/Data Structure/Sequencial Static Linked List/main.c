@@ -119,38 +119,38 @@ int main(){
                 break;
 
             case 9:
+            
                 printf("\n Type the element position to be searched: ");
                 scanf("%d", &pos);
 
-                //data = searchElementByPosition(li, pos);
-/*
-                if(data != NULL){
+                ok = searchElementByPosition(li, pos, &data);
+
+                if(ok){
                     printf("\n Successful search!");
-                    printf("\n Element of %dth position is: ");
+                    printf("\n Element of %dth position is: ", pos);
                     printf("%d", data);
                 }else{
                     printf("\n This position doesn't exist!");
                 }
-*/
+
                 break;
-/*
-      case 10:
 
-        // busca elemento pelo dado
-        printf("\n Código do produto a ser buscado: ");
-        scanf("%d", &dado);
+            case 10:
 
-        produto = buscar_lista_dado(li, dado);
+            printf("\n Type the element value to be searched: ");
+            scanf("%d", &data);
 
-        if(produto != NULL){
-          printf("\n Busca realizada com sucesso!");
-          printf("\n Elemento com código %d na lista: ", dado);
-          imprimir_produto(produto);
-        }else{
-          printf("\n Elemento não encontrado!");
-        }
+            ok = searchElementByValue(li, data, &pos);
 
-        break;*/
+            if(ok){
+                printf("\n Successful search!");
+                printf("\n The element value of %dth position is: ", pos);
+                printf("%d", data);
+            }else{
+                printf("\n This element doesn't exist!");
+            }
+
+                break;
 
             case 11:
                 printf("\n Static list: ");
@@ -160,14 +160,14 @@ int main(){
 
             case 12:
 
-        // libera memória e finaliza programa
-       // liberar_lista(li);
-        printf("\nFinalizando...");
-        break;
+                // libera memória e finaliza programa
+                // liberar_lista(li);
+                printf("\nFinalizando...");
+                break;
 
-      default:
-        printf("\nOpção inválida!");
-        break;
+            default:
+                printf("\nOpção inválida!");
+                break;
     }
 
   }while(choice != 12);

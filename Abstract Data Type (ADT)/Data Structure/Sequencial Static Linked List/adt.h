@@ -27,6 +27,8 @@ int deletionFromEnd(List *li);
 
 int deleteNthPosition(List *li, int data);
 
+int searchElementByPosition(List *li, int pos, int *data);
 
+int searchElementByValue(List *li, int data, int *pos);
 
 #endif

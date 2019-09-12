@@ -1,0 +1,37 @@
+# depslib dependency file v1.0
+1354387530 source:d:\projponto\ponto.c
+	<stdlib.h>
+	<math.h>
+	"Ponto.h"
+
+1354387023 d:\projponto\ponto.h
+
+1354386777 source:d:\projponto\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Ponto.h"
+
+1354387762 source:d:\andre\pesquisa\publicações\livro estutura de dados em c\códigos\projponto\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Ponto.h"
+
+1358680255 d:\andre\pesquisa\publicações\livro estutura de dados em c\códigos\projponto\ponto.h
+
+1358680223 source:d:\andre\pesquisa\publicações\livro estutura de dados em c\códigos\projponto\ponto.c
+	<stdlib.h>
+	<math.h>
+	"Ponto.h"
+
+1358670672 source:c:\users\rodrigo duarte\desktop\projponto\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Ponto.h"
+
+1358669456 c:\users\rodrigo duarte\desktop\projponto\ponto.h
+
+1381927854 source:c:\users\rodrigo duarte\desktop\projponto\ponto.c
+	<stdlib.h>
+	<math.h>
+	"Ponto.h"
+

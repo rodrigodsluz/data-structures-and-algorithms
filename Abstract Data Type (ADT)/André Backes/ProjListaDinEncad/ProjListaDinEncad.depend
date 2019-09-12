@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1354813027 source:d:\aulas ufu\aulas prontas\estrutura de dados 1\projlistadinencad\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ListaDinEncad.h"
+
+1354813545 source:d:\aulas ufu\aulas prontas\estrutura de dados 1\projlistadinencad\listadinencad.c
+	<stdio.h>
+	<stdlib.h>
+	"ListaDinEncad.h"
+
+1354723874 d:\aulas ufu\aulas prontas\estrutura de dados 1\projlistadinencad\listadinencad.h
+
+1358592023 source:d:\andre\aulas ufu\aulas prontas\estrutura de dados 1\projlistadinencad\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ListaDinEncad.h"
+
+1358590755 d:\andre\aulas ufu\aulas prontas\estrutura de dados 1\projlistadinencad\listadinencad.h
+
+1358592050 source:d:\andre\aulas ufu\aulas prontas\estrutura de dados 1\projlistadinencad\listadinencad.c
+	<stdio.h>
+	<stdlib.h>
+	"ListaDinEncad.h"
+

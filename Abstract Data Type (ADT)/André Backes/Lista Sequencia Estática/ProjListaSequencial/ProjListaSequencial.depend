@@ -1,0 +1,44 @@
+# depslib dependency file v1.0
+1354634903 source:d:\projlistasequencial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ListaSequencial.h"
+
+1354636329 d:\projlistasequencial\listasequencial.h
+
+1354703687 source:d:\andre\aulas ufu\aulas prontas\estrutura de dados 1\projlistasequencial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ListaSequencial.h"
+
+1358588960 d:\andre\aulas ufu\aulas prontas\estrutura de dados 1\projlistasequencial\listasequencial.h
+
+1358590387 source:d:\andre\aulas ufu\aulas prontas\estrutura de dados 1\projlistasequencial\listasequencial.c
+	<stdio.h>
+	<stdlib.h>
+	"ListaSequencial.h"
+
+1388229062 source:e:\ertai\levar casa\temp\livro estutura de dados em c\códigos\projlistasequencial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ListaSequencial.h"
+
+1388228558 e:\ertai\levar casa\temp\livro estutura de dados em c\códigos\projlistasequencial\listasequencial.h
+
+1388228665 source:e:\ertai\levar casa\temp\livro estutura de dados em c\códigos\projlistasequencial\listasequencial.c
+	<stdio.h>
+	<stdlib.h>
+	"ListaSequencial.h"
+
+1388221950 source:c:\users\rodrigo duarte\desktop\projlistasequencial\listasequencial.c
+	<stdio.h>
+	<stdlib.h>
+	"ListaSequencial.h"
+
+1388221360 c:\users\rodrigo duarte\desktop\projlistasequencial\listasequencial.h
+
+1388221864 source:c:\users\rodrigo duarte\desktop\projlistasequencial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ListaSequencial.h"
+
