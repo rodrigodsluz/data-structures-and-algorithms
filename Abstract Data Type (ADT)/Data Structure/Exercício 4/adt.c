@@ -141,11 +141,14 @@ Produto searchCheaperProduct(List *li){
     int i=0;
     for(i=0; i<li->amount; i++){
         if(li->product[i].preco < cheaper ){
-            //cheaper = li->product[i].preco;
+            cheaper = li->product[i].preco;
             temp = li->product[i];
-        }else{
+        }/*else{
             temp = li->product[0];
-        }
+        }*/
+    }
+    if(cheaper == li->product[0].preco){
+        temp = li->product[0];
     }
     //temp = li->product[i];
     return temp;
