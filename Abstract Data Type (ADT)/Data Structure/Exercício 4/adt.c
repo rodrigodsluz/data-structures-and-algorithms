@@ -107,6 +107,8 @@ int printList(List *li, int cont){
         printList(li, li->amount--);
     }
     */
+   printf("-----------------------------\n\n");
+
    if(cont == li->amount){
        return 0;
    }else{
@@ -138,11 +140,11 @@ Produto searchCheaperProduct(List *li){
     float cheaper = li->product[0].preco;
     int i=0;
     for(i=0; i<li->amount; i++){
-        if(li->product[i].preco < cheaper){
+        if(li->product[i].preco < cheaper ){
             //cheaper = li->product[i].preco;
             temp = li->product[i];
         }else{
-            return li->product[0];
+            temp = li->product[0];
         }
     }
     //temp = li->product[i];

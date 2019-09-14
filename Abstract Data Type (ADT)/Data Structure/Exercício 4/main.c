@@ -58,6 +58,7 @@ int main(){
         case 4:
             {
                 int cont = 0;
+                printf("Printing all products in the list:\n\n");
                 ok = printList(li, cont);
 
                 if(ok == 0){
