@@ -131,3 +131,20 @@ int printList(List *li, int cont){
 
     return 1;
 }
+
+Produto searchCheaperProduct(List *li){
+
+    Produto temp;
+    float cheaper = li->product[0].preco;
+    int i=0;
+    for(i=0; i<li->amount; i++){
+        if(li->product[i].preco < cheaper){
+            //cheaper = li->product[i].preco;
+            temp = li->product[i];
+        }else{
+            return li->product[0];
+        }
+    }
+    //temp = li->product[i];
+    return temp;
+}

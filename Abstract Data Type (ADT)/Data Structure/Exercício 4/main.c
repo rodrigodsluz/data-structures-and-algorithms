@@ -7,14 +7,15 @@ int createProduct(Produto *prod);
 int main(){
     List *li;
     Produto prod;
-    int choice=0, ok=0;
+    int choice, ok;
     
     do{
         printf("1 - Create list\n");
         printf("2 - Free list\n");
         printf("3 - Add new product\n");
         printf("4 - Print List\n");
-        printf("5 - Exit\n");
+        printf("5 - Search the cheaper product\n");
+        printf("6 - Exit\n");
         printf("\nChoice: ");
         scanf("%d", &choice);
         printf("\n");
@@ -36,7 +37,7 @@ int main(){
             ok = freeList(li);
 
             if(ok){
-                printf("List desallocated successfully\n");
+                printf("List desallocated successfully\n\n");
             }else{
                 printf("Error");
             }
@@ -55,23 +56,42 @@ int main(){
             break;
 
         case 4:
-        {
-            int cont = 0;
-            ok = printList(li, cont);
+            {
+                int cont = 0;
+                ok = printList(li, cont);
 
-            if(ok == 0){
-                printf("List doesn't exist\n");
-            }
+                if(ok == 0){
+                    printf("List doesn't exist\n");
+                }
             
+                break;
+            }
 
+        case 5:
+            {  
+                Produto cheaper;
+                cheaper = searchCheaperProduct(li);
+
+                printf("The cheaper product is:\n");
+                printf("Code: %d\n",cheaper.codigo);
+                printf("Name: %s\n",cheaper.nome);
+                printf("Price: %.2f\n",cheaper.preco);
+                printf("Amount: %d\n\n", cheaper.qtd);
+
+                break;
+            }
+
+        case 6:
+            printf("Thank you\n\n");
             break;
-        }
+
         default:
-
+            printf("Invalid option\n\n");
             break;
         }
+
         
-    }while(choice!=5);
+    }while(choice!=6);
 
     return 0;
 }

@@ -20,4 +20,6 @@ int insertAtBeginning(List *li, Produto prod);
 
 int printList(List *li, int cont);
 
+Produto searchCheaperProduct(List *li);
+
 #endif
