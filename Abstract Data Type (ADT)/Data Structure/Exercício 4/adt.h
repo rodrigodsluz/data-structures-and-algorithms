@@ -16,15 +16,12 @@ int freeList(List *li);
 
 int insertAtBeginning(List *li, Produto prod);
 
-//int printProduct(Produto *prod);
-
 int printList(List *li, int cont);
 
-Produto searchCheaperProduct(List *li);
+int searchCheaperProduct(List *li, Produto *cheaper);
 
 int deleteNthElement(List *li, int n);
 
 int swapByPosition(List *li, int p1, int p2);
-
 
 #endif

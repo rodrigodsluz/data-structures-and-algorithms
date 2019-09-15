@@ -73,7 +73,14 @@ int main(){
         case 5:
             {  
                 Produto cheaper;
-                cheaper = searchCheaperProduct(li);
+                
+                ok = searchCheaperProduct(li, &cheaper);
+
+                if(ok){
+                    printf("Successful search\n\n");
+                }else{
+                    printf("Fail");
+                }
 
                 printf("The cheaper product is:\n");
                 printf("Code: %d\n",cheaper.codigo);
@@ -89,28 +96,26 @@ int main(){
             int n;
             printf("How many elements from end do you want do delete? ");
             scanf("%d", &n);
+            printf("\n");
 
             ok = deleteNthElement(li, n);
 
             if(ok){
                 printf("Successful deletion\n\n");
             }else{
-                printf("Fail");
+                printf("Fail\n\n");
             }
 
             break;
         }
         case 7:
          {   
-            
             int p1, p2; 
+
             printf("Type the first position: "); 
             scanf("%d", &p1);
             printf("Type the second position: "); 
             scanf("%d", &p2);
-
-            
-            
 
             ok = swapByPosition(li, p1, p2);
 
@@ -119,9 +124,6 @@ int main(){
             }else{
                 printf("Fail");
             }
-
-            
-
 
             break;
          }
@@ -141,14 +143,6 @@ int main(){
 }
 
 int createProduct(Produto *prod){
-    /*
-    *prod = (Produto*)malloc(sizeof(Produto));
-
-    if(*prod==NULL){
-        return 0;
-    }
-    */
-
     printf("Type the product code: ");
     scanf("%d", &(prod)->codigo);
     printf("Type the product name ");
