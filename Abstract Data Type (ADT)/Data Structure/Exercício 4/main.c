@@ -12,10 +12,12 @@ int main(){
     do{
         printf("1 - Create list\n");
         printf("2 - Free list\n");
-        printf("3 - Add new product\n");
+        printf("3 - Add new product at beginning\n");
         printf("4 - Print List\n");
         printf("5 - Search the cheaper product\n");
-        printf("6 - Exit\n");
+        printf("6 - Delete the nths elements\n");
+        printf("7 - Swap two elements by position\n");
+        printf("8 - Exit\n");
         printf("\nChoice: ");
         scanf("%d", &choice);
         printf("\n");
@@ -83,6 +85,47 @@ int main(){
             }
 
         case 6:
+        {
+            int n;
+            printf("How many elements from end do you want do delete? ");
+            scanf("%d", &n);
+
+            ok = deleteNthElement(li, n);
+
+            if(ok){
+                printf("Successful deletion\n\n");
+            }else{
+                printf("Fail");
+            }
+
+            break;
+        }
+        case 7:
+         {   
+            
+            int p1, p2; 
+            printf("Type the first position: "); 
+            scanf("%d", &p1);
+            printf("Type the second position: "); 
+            scanf("%d", &p2);
+
+            
+            
+
+            ok = swapByPosition(li, p1, p2);
+
+            if(ok){
+                printf("Successful swap\n\n");
+            }else{
+                printf("Fail");
+            }
+
+            
+
+
+            break;
+         }
+        case 8:
             printf("Thank you\n\n");
             break;
 
@@ -92,7 +135,7 @@ int main(){
         }
 
         
-    }while(choice!=6);
+    }while(choice!=8);
 
     return 0;
 }

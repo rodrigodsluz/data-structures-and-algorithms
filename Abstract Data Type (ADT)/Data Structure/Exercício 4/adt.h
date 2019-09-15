@@ -22,4 +22,9 @@ int printList(List *li, int cont);
 
 Produto searchCheaperProduct(List *li);
 
+int deleteNthElement(List *li, int n);
+
+int swapByPosition(List *li, int p1, int p2);
+
+
 #endif

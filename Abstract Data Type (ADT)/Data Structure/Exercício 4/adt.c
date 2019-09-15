@@ -153,3 +153,64 @@ Produto searchCheaperProduct(List *li){
     //temp = li->product[i];
     return temp;
 }
+
+int deleteNthElement(List *li, int n){
+    if(li==NULL || li->amount == 0){
+       return 0; 
+    }
+/*
+    if(n==1){
+        li->amount--;
+    }else{*/
+        while(n--){
+            li->amount--;
+        }
+        /*
+        for(int i=li>amount-1; i>=n; i--){
+            
+        }
+        */
+    //}
+
+    return 1;
+}
+
+int swapByPosition(List *li, int p1, int p2){
+    if(li==NULL || li->amount == 0){
+        return 0;
+    }
+
+            //Testing
+            printf("Before swap\n");
+            printf("p1:\n");
+            printf("Code: %d\n",li->product[p1].codigo);
+            printf("Name: %s\n",li->product[p1].nome);
+            printf("Price: %.2f\n",li->product[p1].preco);
+            printf("Amount: %d\n\n", li->product[p1].qtd);
+
+            printf("p2:\n");
+            printf("Code: %d\n",li->product[p2].codigo);
+            printf("Name: %s\n",li->product[p2].nome);
+            printf("Price: %.2f\n",li->product[p2].preco);
+            printf("Amount: %d\n\n", li->product[p2].qtd);
+
+    Produto temp = li->product[p1];
+    li->product[p1] = li->product[p2];
+    li->product[p2] = temp;
+
+            //Testing
+            printf("After swap\n");
+            printf("p1:\n");
+            printf("Code: %d\n",li->product[p1].codigo);
+            printf("Name: %s\n",li->product[p1].nome);
+            printf("Price: %.2f\n",li->product[p1].preco);
+            printf("Amount: %d\n\n", li->product[p1].qtd);
+
+            printf("p2:\n");
+            printf("Code: %d\n",li->product[p2].codigo);
+            printf("Name: %s\n",li->product[p2].nome);
+            printf("Price: %.2f\n",li->product[p2].preco);
+            printf("Amount: %d\n\n", li->product[p2].qtd);
+
+    return 1;
+}
