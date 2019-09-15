@@ -95,7 +95,7 @@ int deleteNthElement(List *li, int n){
 }
 
 int swapByPosition(List *li, int p1, int p2){
-    if(li==NULL || li->amount == 0){
+    if(li==NULL || li->amount == 0 || p1 < 0 || p2 < 0 || p1 > li->amount-1 || p2 > li->amount-1){
         return 0;
     }
 
