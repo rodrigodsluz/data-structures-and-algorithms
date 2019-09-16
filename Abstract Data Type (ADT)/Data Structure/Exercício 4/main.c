@@ -15,7 +15,7 @@ int main(){
         printf("3 - Add new product at beginning\n");
         printf("4 - Print List\n");
         printf("5 - Search the cheaper product\n");
-        printf("6 - Delete the nths elements\n");
+        printf("6 - Delete the nth last elements\n");
         printf("7 - Swap two elements by position\n");
         printf("8 - Exit\n");
         printf("\nChoice: ");

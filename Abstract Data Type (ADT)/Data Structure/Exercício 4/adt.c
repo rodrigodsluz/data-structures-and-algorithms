@@ -78,7 +78,7 @@ int searchCheaperProduct(List *li, Produto *cheaper){
             *cheaper = li->product[i];
         }
     }
-    
+  
     return 1;
 }
 
