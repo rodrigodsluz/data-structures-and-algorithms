@@ -7,12 +7,16 @@ typedef struct aluno{
     float nota;
 }Student; 
 
-typedef struct list *List;
+typedef struct element *List;
 
 List *createList();
 
-int insertAtBeginning(List *head, Student student);
+int freeList(List *li);
 
-int printList(List *head);
+int insertAtBeginning(List *li, Student student);
+
+int printList(List *li);
+
+int mergeLists(List *l1, List *l2, List *li);
 
 #endif
