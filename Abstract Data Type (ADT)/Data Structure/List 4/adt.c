@@ -71,7 +71,7 @@ int searchCheaperProduct(List *li, Produto *cheaper){
         return 0;
     }
 
-    (*cheaper).preco = li->product[0].preco;
+    (*cheaper) = li->product[0];
 
     for(int i=0; i<li->amount; i++){
         if(li->product[i].preco < (*cheaper).preco ){

@@ -78,15 +78,16 @@ int main(){
 
                 if(ok){
                     printf("Successful search\n\n");
+                    
+                    printf("The cheaper product is:\n");
+                    printf("Code: %d\n",cheaper.codigo);
+                    printf("Name: %s\n",cheaper.nome);
+                    printf("Price: %.2f\n",cheaper.preco);
+                    printf("Amount: %d\n\n", cheaper.qtd);
                 }else{
                     printf("Fail");
                 }
 
-                printf("The cheaper product is:\n");
-                printf("Code: %d\n",cheaper.codigo);
-                printf("Name: %s\n",cheaper.nome);
-                printf("Price: %.2f\n",cheaper.preco);
-                printf("Amount: %d\n\n", cheaper.qtd);
 
                 break;
             }
@@ -146,7 +147,7 @@ int createProduct(Produto *prod){
     printf("Type the product code: ");
     scanf("%d", &(prod)->codigo);
     printf("Type the product name ");
-    scanf(" %[^\n]", &(prod)->nome);
+    scanf(" %[^\n]", (prod)->nome);
     printf("Type the product price: ");
     scanf("%f", &(prod)->preco);
     printf("Type the product amount: ");
