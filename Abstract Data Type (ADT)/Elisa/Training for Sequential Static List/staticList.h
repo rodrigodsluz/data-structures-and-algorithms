@@ -11,5 +11,9 @@ typedef struct list List;
 
 List *createList();
 
+int freeList(List *li);
+
+int printList(List *li);
+
 
 #endif

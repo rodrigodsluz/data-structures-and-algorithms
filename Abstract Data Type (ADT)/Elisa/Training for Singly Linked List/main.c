@@ -40,13 +40,25 @@ int main(){
             }
 
             case 2:{
+                ok = freeList(li);
 
+                if(ok){
+                    printf("Deallocated Successfully!!!\n");
+                }else{
+                    printf("Failed!!!\n");
+                }
 
                 break;
             }
 
             case 3:{
+                ok = printList(li);
 
+                if(ok){
+                    printf("Successful print!!!\n");
+                }else{
+                    printf("Failed!!!\n");
+                }
 
                 break;
             }

@@ -9,7 +9,11 @@ typedef struct student{
 
 typedef struct element *List;
 
+List *createList();
 
+int freeList(List *li);
+
+int printList(List *li);
 
 
 #endif

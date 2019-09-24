@@ -12,7 +12,7 @@ int main(){
     do{
         printf("1 - Create List\n");
         printf("2 - Free List\n");
-        printf("3 - Create List\n");
+        printf("3 - Print List\n");
         printf("4 - Create List\n");
         printf("5 - Create List\n");
         printf("6 - Create List\n");
@@ -40,13 +40,25 @@ int main(){
             }
 
             case 2:{
+                ok = freeList(li);
 
+                if(ok){
+                    printf("Deallocated Successfully!!!\n");
+                }else{
+                    printf("Failed!!!\n");
+                }
 
                 break;
             }
 
             case 3:{
-                
+                ok = printList(li);
+
+                if(ok){
+                    printf("Successful print!!!\n");
+                }else{
+                    printf("Failed!!!\n");
+                }
 
                 break;
             }
