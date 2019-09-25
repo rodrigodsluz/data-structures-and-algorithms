@@ -17,6 +17,11 @@ int printList(List *li);
 
 int insertAtBeginning(List *li, Student stud);
 
+int insertAtEnd(List *li, Student stud);
+
+int insertIncreasingOrder(List *li, Student stud);
+
+
 
 
 #endif

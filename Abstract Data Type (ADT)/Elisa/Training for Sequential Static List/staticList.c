@@ -38,13 +38,13 @@ int printList(List *li){
     }
 
     if(li->amount == 0){
-        printf("The list is empty!!!\n");
+        printf("The list is empty!!!\n\n");
     }
 
     for(int i=0; i<li->amount; i++){
         printf("%s\n", li->student[i].name);
         printf("%.2lf\n", li->student[i].grade);
-        printf("%d\n", li->student[i].registerNumber);
+        printf("%d\n\n", li->student[i].registerNumber);
     }
 
     return 1;
@@ -66,5 +66,35 @@ int insertAtBeginning(List *li, Student stud){
     li->student[0] = stud;
     li->amount++;
 
+    return 1;
+}
+
+int insertAtEnd(List *li, Student stud){
+    if(li == NULL){
+        return 0;
+    }
+
+    if(li->amount == MAX){
+        return 0;
+    }
+
+    li->student[li->amount] = stud;
+    li->amount++;
+
+    return 1;
+}
+
+int insertIncreasingOrder(List *li, Student stud){
+    if(li == NULL){
+        return 0;
+    }
+
+    if(li->amount == MAX){
+        return 0;
+    }
+
+    
+
+    li->amount++;
     return 1;
 }

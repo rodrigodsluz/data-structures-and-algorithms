@@ -15,8 +15,8 @@ int main(){
         printf("2 - Free List\n");
         printf("3 - Print List\n");
         printf("4 - Insert at beginning\n");
-        printf("5 - Create List\n");
-        printf("6 - Create List\n");
+        printf("5 - Insert at end\n");
+        printf("6 - Insert student in increasing order\n");
         printf("7 - Create List\n");
         printf("8 - Create List\n");
         printf("9 - Create List\n");
@@ -77,13 +77,28 @@ int main(){
             }
 
             case 5:{
+                ok = addStudent(&stud);
+                ok = insertAtEnd(li, stud);
+
+                if(ok){
+                    printf("Successful insertion at end!!!\n\n");
+                }else{
+                    printf("Failed!!!\n\n");
+                }
 
 
                 break;
             }
 
             case 6:{
+                ok = addStudent(&stud);
+                ok = insertIncreasingOrder(li, stud);
 
+                if(ok){
+                    printf("Successful insertion at end!!!\n\n");
+                }else{
+                    printf("Failed!!!\n\n");
+                }
 
                 break;
             }

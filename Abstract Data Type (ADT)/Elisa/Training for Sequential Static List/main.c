@@ -16,8 +16,8 @@ int main(){
         printf("2 - Free List\n");
         printf("3 - Print List\n");
         printf("4 - Insert at beginning\n");
-        printf("5 - Create List\n");
-        printf("6 - Create List\n");
+        printf("5 - Insert at end\n");
+        printf("6 - Insert student in increasing order\n");
         printf("7 - Create List\n");
         printf("8 - Create List\n");
         printf("9 - Create List\n");
@@ -26,6 +26,7 @@ int main(){
         printf("12 - Create List\n");
         printf("Choice: ");
         scanf("%d", &choice);
+        printf("\n");
 
         switch(choice){
 
@@ -33,9 +34,9 @@ int main(){
                 li = createList();
 
                 if(li!=NULL){
-                    printf("Sequential Static List Successfully created!!!\n");
+                    printf("Sequential Static List Successfully created!!!\n\n");
                 }else{
-                    printf("Failed\n");
+                    printf("Failed\n\n");
                 }
 
                 break;
@@ -45,9 +46,9 @@ int main(){
                 ok = freeList(li);
 
                 if(ok){
-                    printf("Deallocated Successfully!!!\n");
+                    printf("Deallocated Successfully!!!\n\n");
                 }else{
-                    printf("Failed!!!\n");
+                    printf("Failed!!!\n\n");
                 }
 
                 break;
@@ -57,7 +58,7 @@ int main(){
                 ok = printList(li);
 
                 if(!ok){
-                    printf("List not found!!!\n");
+                    printf("List not found!!!\n\n");
                 }
 
                 break;
@@ -68,22 +69,36 @@ int main(){
                 ok = insertAtBeginning(li, stud);
 
                 if(ok){
-                    printf("Successful insertion at beginning!!!\n");
+                    printf("Successful insertion at beginning!!!\n\n");
                 }else{
-                    printf("Failed!!!\n");
+                    printf("Failed!!!\n\n");
                 }
 
                 break;
             }
 
             case 5:{
+                ok = addStudent(&stud);
+                ok = insertAtEnd(li, stud);
 
+                if(ok){
+                    printf("Successful insertion at end!!!\n\n");
+                }else{
+                    printf("Failed!!!\n\n");
+                }
 
                 break;
             }
 
             case 6:{
+                ok = addStudent(&stud);
+                ok = insertIncreasingOrder(li, stud);
 
+                if(ok){
+                    printf("Successful insertion at end!!!\n\n");
+                }else{
+                    printf("Failed!!!\n\n");
+                }
 
                 break;
             }
@@ -119,13 +134,13 @@ int main(){
             }
 
             case 12:{
-                printf("Thank you!!!");
+                printf("Thank you!!!\n\n");
 
                 break;
             }
 
             default: {
-                printf("Invalid Option!!!");
+                printf("Invalid Option!!!\n\n");
             }
         }
     }while(choice != 12);
@@ -141,6 +156,7 @@ int addStudent(Student *stud){
     scanf("%lf", &stud->grade);
     printf("What's the student registration number?");
     scanf("%d", &stud->registerNumber);
+    printf("\n");
 
     return 1;
 }
