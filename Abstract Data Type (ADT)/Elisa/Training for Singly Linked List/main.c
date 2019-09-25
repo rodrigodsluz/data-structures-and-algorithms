@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "linkedList.h"
 
+int addStudent(Student *stud);
 int main(){
     int choice, ok;
 
@@ -12,8 +13,8 @@ int main(){
     do{
         printf("1 - Create List\n");
         printf("2 - Free List\n");
-        printf("3 - Create List\n");
-        printf("4 - Create List\n");
+        printf("3 - Print List\n");
+        printf("4 - Insert at beginning\n");
         printf("5 - Create List\n");
         printf("6 - Create List\n");
         printf("7 - Create List\n");
@@ -24,6 +25,7 @@ int main(){
         printf("12 - Create List\n");
         printf("Choice: ");
         scanf("%d", &choice);
+        printf("\n");
 
         switch(choice){
 
@@ -31,9 +33,9 @@ int main(){
                 li = createList();
 
                 if(li != NULL){
-                    printf("Singly Linked List Successfully Created!!!\n");
+                    printf("Singly Linked List Successfully Created!!!\n\n");
                 }else{
-                    printf("Failed!!!\n");
+                    printf("Failed!!!\n\n");
                 }
 
                 break;
@@ -43,9 +45,9 @@ int main(){
                 ok = freeList(li);
 
                 if(ok){
-                    printf("Deallocated Successfully!!!\n");
+                    printf("Deallocated Successfully!!!\n\n");
                 }else{
-                    printf("Failed!!!\n");
+                    printf("Failed!!!\n\n");
                 }
 
                 break;
@@ -54,17 +56,22 @@ int main(){
             case 3:{
                 ok = printList(li);
 
-                if(ok){
-                    printf("Successful print!!!\n");
-                }else{
-                    printf("Failed!!!\n");
+                if(!ok){
+                    printf("List not found!!!\n\n");
                 }
 
                 break;
             }
 
             case 4:{
+                ok = addStudent(&stud);
+                ok = insertAtBeginning(li, stud);
 
+                if(ok){
+                    printf("Successful insertion at beginning!!!\n\n");
+                }else{
+                    printf("Failed!!!\n\n");
+                }
 
                 break;
             }
@@ -112,17 +119,29 @@ int main(){
             }
 
             case 12:{
-                printf("Thank you!!!");
+                printf("Thank you!!!\n\n");
 
                 break;
             }
 
             default: {
-                printf("Invalid Option!!!");
+                printf("Invalid Option!!!\n\n");
             }
         }
     }while(choice != 12);
 
 
     return 0;
+}
+
+int addStudent(Student *stud){
+    printf("What's the student name? ");
+    scanf(" %[^\n]", stud->name);
+    printf("What's the student grade? ");
+    scanf("%lf", &stud->grade);
+    printf("What's the student registration number?");
+    scanf("%d", &stud->registerNumber);
+    printf("\n");
+
+    return 1;
 }

@@ -15,5 +15,7 @@ int freeList(List *li);
 
 int printList(List *li);
 
+int insertAtBeginning(List *li, Student stud);
+
 
 #endif

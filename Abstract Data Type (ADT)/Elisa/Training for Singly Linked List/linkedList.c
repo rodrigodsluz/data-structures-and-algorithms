@@ -43,7 +43,7 @@ int printList(List *li){
     }
 
     if(*li == NULL){
-        printf("The list is empty!!!\n");
+        printf("The list is empty!!!\n\n");
     }
 
     Element *node = *li;
@@ -51,9 +51,26 @@ int printList(List *li){
     while(node!=NULL){
         printf("%s\n", node->student.name);
         printf("%.2lf\n", node->student.grade);
-        printf("%d\n", node->student.registerNumber);
+        printf("%d\n\n", node->student.registerNumber);
         node = node->next;
     }
+
+    return 1;
+}
+
+int insertAtBeginning(List *li, Student stud){
+    if(li == NULL){
+        return 0;
+    }
+
+    Element *node = (Element*)malloc(sizeof(Element));
+
+    node->student = stud;
+
+    node->next = *li;
+    *li = node;
+
+
 
     return 1;
 }

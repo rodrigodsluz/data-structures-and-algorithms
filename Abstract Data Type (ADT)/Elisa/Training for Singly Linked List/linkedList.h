@@ -3,7 +3,7 @@
 
 typedef struct student{
     char name[30];
-    int grade;
+    double grade;
     int registerNumber;
 }Student;
 
@@ -14,6 +14,9 @@ List *createList();
 int freeList(List *li);
 
 int printList(List *li);
+
+int insertAtBeginning(List *li, Student stud);
+
 
 
 #endif
