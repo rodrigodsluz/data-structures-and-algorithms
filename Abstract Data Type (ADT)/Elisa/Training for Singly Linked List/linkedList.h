@@ -29,7 +29,7 @@ int deleteAnyValue(List *li, int p);
 
 int searchValueByPosition(List *li, int p, int *v);
 
-//int sizeByRecursion(List *li, int *cont);
+//int sizeByRecursion(List *li, int cont);
 
 int searchPositionByValue(List *li, int v, int *p);
 
