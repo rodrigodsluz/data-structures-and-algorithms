@@ -189,9 +189,22 @@ int deleteAtEnd(List *li){
     }
     */
 
-    //Another way
+    //The best way
+    Element *temp = *li;
+    Element *prev;
 
-    
+    while(temp->next!= NULL){
+        prev = temp;
+        temp = temp->next;
+    }
+
+    if(temp == *li){
+        *li = NULL;
+    }else{
+        prev->next = NULL;
+    }
+
+    free(temp);
 
     return 1;
 }
@@ -226,6 +239,103 @@ int deleteAnyValue(List *li, int p){
     }
 
     free(temp);
+
+    return 1;
+}
+/*
+int sizeByRecursion(List *li, int *cont){
+    if(li == NULL){
+        return 0;
+    }
+
+    if(){
+
+    }else{
+
+    }
+
+    return 1;
+}
+*/
+int sizeOfList(List *li){
+    if(li == NULL){
+        return 0;
+    }
+
+    int cont = 0;
+    Element *temp = *li;
+    while(temp != NULL){
+        cont++;
+        temp = temp->next;
+    }
+    return cont;
+}
+
+int searchValueByPosition(List *li, int p, int *v){
+    if(li ==  NULL){
+        return 0;
+    }
+/*
+    if(p <= 0 || p > sizeOfList(li) || *li == NULL){
+        printf("This position doesn't exist!!!\n\n");
+        return 0;
+    }
+
+    Element *temp = *li;
+
+    p--;
+    while(p--){
+        temp = temp->next;
+    }
+
+    *v = temp->student.registerNumber;
+*/
+
+    //The best way
+    if((*li) == NULL || p <= 0){
+        return 0;
+    }
+
+    Element *temp = *li;
+    int i = 1;
+
+    while(temp != NULL && i < p){
+        temp = temp->next;
+        i++;
+    }
+
+    if(temp == NULL){
+        printf("This position doesn't exist!!!\n\n");
+        return 0;
+    }
+
+    *v = temp->student.registerNumber;
+
+
+    return 1;
+}
+
+int searchPositionByValue(List *li, int v, int *p){
+    if(li == NULL){
+        return 0;
+    }
+
+    if(*li == NULL){
+        return 0;
+    }
+
+    Element *temp = *li;
+    int j=1;
+    while(temp != NULL && temp->student.registerNumber != v){
+        j++;
+        temp = temp->next;
+    }
+
+    if(temp == NULL){
+        return 0;
+    }
+
+    *p = j;
 
     return 1;
 }

@@ -23,7 +23,8 @@ int main(){
         printf("9 - Delete any value\n");
         printf("10 - Search value by position\n");
         printf("11 - Search position by value\n");
-        printf("12 - Exit\n");
+        printf("12 - --\n");
+        printf("13 - Exit\n");
         printf("Choice: ");
         scanf("%d", &choice);
         printf("\n");
@@ -143,18 +144,47 @@ int main(){
             }
 
             case 10:{
+                int p, v;
+                printf("Enter the position to find the value: ");
+                scanf("%d", &p);
 
+                ok = searchValueByPosition(li, p, &v);
+
+                if(ok){
+                    printf("Successful search!!!\n\n");
+                    printf("The value at %dth position is: %d", p, v);
+                    printf("\n");
+                }else{
+                    printf("Failed!!!\n\n");
+                }
 
                 break;
             }
 
             case 11:{
+                int v, p;
+                printf("Enter the value to find the position: ");
+                scanf("%d", &v);
 
+                ok = searchPositionByValue(li, v, &p);
+
+                if(ok){
+                    printf("Successful search!!!\n\n");
+                    printf("The value %d it's at %dth position!!!\n", v, p);
+                }else{
+                    printf("Failed!!!\n\n");
+                }
 
                 break;
             }
 
             case 12:{
+                
+
+                break;
+            }
+
+            case 13:{
                 printf("Thank you!!!\n\n");
 
                 break;
@@ -164,7 +194,7 @@ int main(){
                 printf("Invalid Option!!!\n\n");
             }
         }
-    }while(choice != 12);
+    }while(choice != 13);
 
 
     return 0;

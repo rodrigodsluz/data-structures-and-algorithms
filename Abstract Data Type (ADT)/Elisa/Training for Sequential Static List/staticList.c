@@ -165,3 +165,50 @@ int deleteAnyValue(List *li, int p){
 
     return 1;
 }
+
+int searchValueByPosition(List *li, int p, int *v){
+    if(li ==  NULL || li->amount == 0){
+        return 0;
+    }
+/*
+    if(p<0 || p>=li->amount){
+        printf("This position doesn't exist!!!\n\n");
+        return 0;
+    }
+
+    *v = li->student[p].registerNumber;
+*/
+
+    //Ignoring the 0th position
+    if(p<=0 || p>li->amount){
+        printf("This position doesn't exist!!!\n\n");
+        return 0;
+    }
+
+    *v = li->student[p-1].registerNumber;
+
+    return 1;
+}
+
+int searchPositionByValue(List *li, int v, int *p){
+    if(li == NULL){
+        return 0;
+    }
+
+    if(li->amount == 0){
+        return 0;
+    }
+
+    int j=0;
+    while(j < li->amount && li->student[j].registerNumber != v){
+        j++;
+    }
+
+    if(j == li->amount == MAX){
+        return 0;
+    }
+
+    *p = j;
+
+    return 1;
+}

@@ -27,4 +27,7 @@ int deleteAtEnd(List *li);
 
 int deleteAnyValue(List *li, int p);
 
+int searchValueByPosition(List *li, int p, int *v);
+
+int searchPositionByValue(List *li, int v, int *p);
 #endif
