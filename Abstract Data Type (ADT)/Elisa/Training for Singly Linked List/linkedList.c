@@ -113,10 +113,119 @@ int insertIncreasingOrder(List *li, Student stud){
         return 0;
     }
 
-    if(li->amount == MAX){
+    Element *node = (Element*)malloc(sizeof(Element));
+    if(node == NULL){
         return 0;
     }
 
+    node->student = stud;
+
+    if(*li == NULL){
+        node->next = NULL;
+        *li = node;
+    }else{
+        Element *prev, *current;
+        current = *li;
+        while(current != NULL && current->student.registerNumber < stud.registerNumber){
+                prev = current;
+                current = current->next;
+        }
+
+        if(current == *li){
+            node->next = *li;
+            *li = node;
+        }else{
+            node->next = current;
+            prev->next = node;
+        }
+        
+    }
+    return 1;
+}
+
+int deleteAtBeginning(List *li){
+    if(li == NULL){
+        return 0;
+    }
+
+    if(*li == NULL){
+        return 0;
+    }
+
+    Element *temp = *li;
+    *li = (*li)->next;
+
+    free(temp);
+
+    return 1;
+}
+
+int deleteAtEnd(List *li){
+    if(li == NULL){
+        return 0;
+    }
+
+    if(*li == NULL){
+        return 0;
+    }
+
+    /*
+    Element *temp = *li;
+
+    while(temp->next != NULL){
+        temp = temp->next;
+    }
+
+    if(temp == *li){
+        *li = (*li)->next;
+        free(temp);
+    }else{
+        Element *prev = *li;;
+        while(prev->next != temp){
+            prev = prev->next;
+        }
+        prev->next = NULL;
+        free(temp);
+    }
+    */
+
+    //Another way
+
     
+
+    return 1;
+}
+
+int deleteAnyValue(List *li, int p){
+    if(li == NULL){
+        return 0;
+    }
+
+    if(*li == NULL){
+        return 0;
+    }
+
+
+    Element *temp = *li;
+    Element *prev;
+
+    
+    while(temp != NULL && temp->student.registerNumber != p){
+        prev = temp;
+        temp = temp->next;
+    }
+
+    if(temp == NULL){
+        return 0;
+    }
+
+    if(temp == *li){
+        *li = (*li)->next;
+    }else{
+        prev->next = temp->next;
+    }
+
+    free(temp);
+
     return 1;
 }

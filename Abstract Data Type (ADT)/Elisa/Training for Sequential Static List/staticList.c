@@ -93,8 +93,75 @@ int insertIncreasingOrder(List *li, Student stud){
         return 0;
     }
 
-    
+    int j=0;
+    while(j < li->amount && li->student[j].registerNumber < stud.registerNumber){
+        j++;
+    }
+
+    for(int i=li->amount-1; i>=j; i--){
+        li->student[i+1] = li->student[i];
+    }
+
+    li->student[j] = stud;
 
     li->amount++;
+    return 1;
+}
+
+int deleteAtBeginning(List *li){
+    if(li == NULL){
+        return 0;
+    }
+
+    if(li->amount == 0){
+        return 0;
+    }
+
+    for(int i=0; i<li->amount-1; i++){
+        li->student[i] = li->student[i+1];
+    }
+
+    li->amount--;
+    return 1;
+}
+
+int deleteAtEnd(List *li){
+    if(li == NULL){
+        return 0;
+    }
+
+    if(li->amount == 0){
+        return 0;
+    }
+
+    li->amount--;
+
+    return 1;
+}
+
+int deleteAnyValue(List *li, int p){
+    if(li == NULL){
+        return 0;
+    }
+
+    if(li->amount == 0){
+        return 0;
+    }
+
+    int j=0;
+    while(j < li->amount && li->student[j].registerNumber != p){
+        j++;
+    }
+
+    if(j == li->amount){
+        return 0;
+    }
+
+    for(int i=j; i<li->amount-1; i++){
+        li->student[i] = li->student[i+1];
+    }
+
+    li->amount--;
+
     return 1;
 }

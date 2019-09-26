@@ -17,12 +17,12 @@ int main(){
         printf("4 - Insert at beginning\n");
         printf("5 - Insert at end\n");
         printf("6 - Insert student in increasing order\n");
-        printf("7 - Create List\n");
-        printf("8 - Create List\n");
-        printf("9 - Create List\n");
-        printf("10 - Create List\n");
-        printf("11 - Create List\n");
-        printf("12 - Create List\n");
+        printf("7 - Delete at beginning\n");
+        printf("8 - Delete at end\n");
+        printf("9 - Delete any value\n");
+        printf("10 - Search value by position\n");
+        printf("11 - Search position by value\n");
+        printf("12 - Exit\n");
         printf("Choice: ");
         scanf("%d", &choice);
         printf("\n");
@@ -104,19 +104,40 @@ int main(){
             }
 
             case 7:{
+                ok = deleteAtBeginning(li);
 
+                if(ok){
+                    printf("Successful deletion!!!\n\n");
+                }else{
+                    printf("Failed!!!\n\n");
+                }
 
                 break;
             }
 
             case 8:{
+                ok = deleteAtEnd(li);
 
+                if(ok){
+                    printf("Successful deletion!!!\n\n");
+                }else{
+                    printf("Failed!!!\n\n");
+                }
 
                 break;
             }
 
             case 9:{
+                int p;
+                printf("Enter the value to delete: ");
+                scanf("%d", &p);
+                ok = deleteAnyValue(li, p);
 
+                if(ok){
+                    printf("Successful deletion!!!\n\n");
+                }else{
+                    printf("Failed!!!\n\n");
+                }
 
                 break;
             }

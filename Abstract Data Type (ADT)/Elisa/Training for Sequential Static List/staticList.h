@@ -21,4 +21,10 @@ int insertAtEnd(List *li, Student stud);
 
 int insertIncreasingOrder(List *li, Student stud);
 
+int deleteAtBeginning(List *li);
+
+int deleteAtEnd(List *li);
+
+int deleteAnyValue(List *li, int p);
+
 #endif
