@@ -2,3 +2,4 @@
 *.txt
 *.ini
 /.vscode
+*.out
