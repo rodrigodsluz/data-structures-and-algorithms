@@ -242,28 +242,24 @@ int deleteAnyValue(List *li, int p){
 
     return 1;
 }
-/*
-int sizeByRecursion(List *li, int cont){
+
+int sizeByRecursion(List *li){
     if(li == NULL){
         return 0;
     }
 
-    Element *temp = *li;
-    int aux = 0;
+    //Element *temp = *li;
 
-    if(temp == NULL){
+    if(*li == NULL){
         return 0;
     }else{
-        while(temp != NULL){
-            cont++;
-            temp = temp->next;
-            aux = sizeByRecursion(temp, cont);
-        }
+        (*li) = (*li)->next;
+        return 1 + sizeByRecursion(li);
     }
-    return cont;
+    
     
 }
-*/
+
 int sizeOfList(List *li){
     if(li == NULL){
         return 0;

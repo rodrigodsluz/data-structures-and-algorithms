@@ -179,9 +179,9 @@ int main(){
             }
 
             case 12:{
-                int cont=0;
+                
 
-               // ok = sizeByRecursion(li, cont);
+                ok = sizeByRecursion(li);
 
                 break;
             }
