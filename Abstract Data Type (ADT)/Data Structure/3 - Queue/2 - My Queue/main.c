@@ -24,7 +24,7 @@ int main(){
                 qu  = createQueue();
 
                 if(qu != NULL){
-                    printf("Queue successfully created!!!\n");
+                    printf("Queue created successfully!!!\n");
                 }else{
                     printf("Failed!!!\n");
                 }
@@ -33,7 +33,14 @@ int main(){
             }
 
             case 2:{
-                
+                ok = freeQueue(qu);
+
+                if(ok){
+                    printf("Queue deallocated successfully!!!\n");
+                }else{
+                    printf("Failed!!!\n");
+                }
+
                 break;
             }
 
