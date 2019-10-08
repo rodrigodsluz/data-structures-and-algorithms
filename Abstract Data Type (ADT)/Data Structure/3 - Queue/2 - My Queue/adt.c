@@ -7,3 +7,18 @@ typedef struct element{
     struct element *next;
 }Element;
 
+struct queue{
+    struct element *head;
+    struct element *tail;
+    int amount;
+};
+
+Queue *createQueue(){
+    Queue *qu = (Queue*)malloc(sizeof(Queue));
+
+    if(qu != NULL){
+        *qu = NULL;
+    }
+
+    return qu;
+}

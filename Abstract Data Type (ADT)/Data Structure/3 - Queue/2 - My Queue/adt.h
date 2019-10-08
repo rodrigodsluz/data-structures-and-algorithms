@@ -9,5 +9,7 @@ typedef struct student{
 
 typedef struct element *Queue;
 
+Queue *createQueue();
+
 
 #endif
