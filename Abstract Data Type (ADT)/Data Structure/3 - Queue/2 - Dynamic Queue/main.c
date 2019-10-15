@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "adt.h"
 
+int createStudent(Student *stud);
+
 int main(){
     Queue *qu;
     Student stud;
@@ -14,7 +16,7 @@ int main(){
         printf("3 - Insert element in the queue\n");
         printf("4 - Print queue\n");
         printf("5 - Remove element of the queue\n");
-        printf("6 - Size of queue\n");
+        printf("6 - Size of queue\n"); //Consult the first element
         printf("7 - Exit\n");
         printf("Option: ");
         scanf("%d", &choice);
@@ -45,7 +47,15 @@ int main(){
             }
 
             case 3:{
-                
+                ok = createStudent(&stud);
+                ok = insertInTheQueue(qu, stud);
+
+                if(ok){
+                    printf("Successful enqueue!!!\n");
+                }else{
+                    printf("Failed!!!\n");
+                }
+
                 break;
             }
 
@@ -80,4 +90,15 @@ int main(){
     }while(choice!=7);
 
     return 0;
+}
+
+int createStudent(Student *stud){
+    printf("Enter the student name: ");
+    scanf(" %[^\n]", stud->name);
+    printf("Enter the grade: ");
+    scanf("%d", &stud->grade);
+    printf("Enter the registration number: ");
+    scanf("%d", &stud->registration);
+
+    return 1;
 }

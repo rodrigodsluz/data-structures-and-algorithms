@@ -9,7 +9,7 @@ typedef struct element{
 
 struct queue{
     struct element *head;
-    struct element *tail;
+    struct element *tai;
     int amount;
 };
 
@@ -35,5 +35,30 @@ int freeQueue(Queue *qu){
         }
         free(qu);
     }
+    return 1;
+}
+
+int insertInTheQueue(Queue *qu, Student stud){
+    if(qu == NULL)
+        return 0;
+
+    Element *node = (Element*) malloc(sizeof(Element));
+
+    if(node == NULL)
+        return 0;
+
+    node->student = stud;
+
+    node->next = NULL;
+
+    if(qu->tail == NULL)//empty queue
+        qu->head = node;
+    else
+        qu->tail->next = node;
+
+    qu->tail = node;
+
+    qu->amount++;
+
     return 1;
 }

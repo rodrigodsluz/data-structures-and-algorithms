@@ -13,5 +13,7 @@ Queue *createQueue();
 
 int freeQueue(Queue *qu);
 
+int insertInTheQueue(Queue *qu, Student stud);
+
 
 #endif
