@@ -7,9 +7,9 @@ typedef struct student{
     int registration;;
 }Student;
 
-typedef struct queue Queue;
+typedef struct element *Stack;
 
-Queue *createQueue();
+Stack *createStack();
 
 int freeQueue(Queue *qu);
 

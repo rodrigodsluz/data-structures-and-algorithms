@@ -3,35 +3,54 @@
 #include "adt.h"
 #define MAX 100
 
-struct queue{
-    int head, tail, amount;
-    Student data[MAX];
+typedef struct stack{
+    int amount;
+    Student student[MAX];
 };
 
-Queue *createQueue(){
-    Queue *qu = (Queue*) malloc(sizeof(Queue));
-    if(qu != NULL){
-        qu->inicio = 0;
-        qu->final = 0;
-        qu->amount = 0;
-    }
-    return fi;
+
+Stack *createStack(){
+    Stack *st = (Stack*)malloc(sizeof(Stack));
+
+    if(st != NULL)
+        *st = NULL;
+    return st;
 }
 
 int freeQueue(Queue *qu){
-    free(qu); 
+    if(qu != NULL){
+        Element *node;
+        while(qu->head != NULL){
+            node = qu->head;
+            qu->head = qu->head->next;
+            free(node);
+        }
+        free(qu);
+    }
+    return 1;
 }
 
 int insertInTheQueue(Queue *qu, Student stud){
     if(qu == NULL)
         return 0;
 
-    if(qu->amount = MAX)
+    Element *node = (Element*) malloc(sizeof(Element));
+
+    if(node == NULL)
         return 0;
 
-    qu->data[qu->tail] = stud;
-    qu->tail = (qu->tail+1)%MAX;
+    node->student = stud;
+
+    node->next = NULL;
+
+    if(qu->tail == NULL)//empty queue
+        qu->head = node;
+    else
+        qu->tail->next = node;
+
+    qu->tail = node;
+
     qu->amount++;
-    
+
     return 1;
 }

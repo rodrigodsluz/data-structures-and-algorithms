@@ -5,30 +5,30 @@
 int createStudent(Student *stud);
 
 int main(){
-    Queue *qu;
+    Stack *st;
     Student stud;
 
     int choice, ok;
 
     do{
-        printf("1 - Create queue\n");
-        printf("2 - Free queue\n");
-        printf("3 - Insert element in the queue\n");
-        printf("4 - Print queue\n");
-        printf("5 - Remove element of the queue\n");
-        printf("6 - Size of queue\n"); //Consult the first element
+        printf("1 - Create stack\n");
+        printf("2 - Free stack\n");
+        printf("3 - Stack Up\n");
+        printf("4 - Print stack\n");
+        printf("5 - Unstack\n");
+        printf("6 - Size of stack\n"); //Consult the first element
         printf("7 - Exit\n");
         printf("Option: ");
         scanf("%d", &choice);
 
         switch(choice){
             case 1:{
-                qu = createList();
+                st  = createStack();
 
-                if(qu!=NULL){
-                    printf("Queue Successfully created!!!\n\n");
+                if(st != NULL){
+                    printf("Stack created successfully!!!\n");
                 }else{
-                    printf("Failed\n\n");
+                    printf("Failed!!!\n");
                 }
 
                 break;
