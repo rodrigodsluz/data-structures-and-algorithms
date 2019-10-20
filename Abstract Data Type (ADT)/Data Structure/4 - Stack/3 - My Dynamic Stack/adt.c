@@ -16,40 +16,27 @@ Stack *createStack(){
     return st;
 }
 
-int freeQueue(Queue *qu){
-    if(qu != NULL){
-        Element *node;
-        while(qu->head != NULL){
-            node = qu->head;
-            qu->head = qu->head->next;
-            free(node);
+int freeStack(Stack *st){
+    if(st != NULL){
+        Element* node;
+        while((*st) != NULL){
+            node = *st;
+            *st = (*st)->next;
+            free(st);
         }
-        free(qu);
+        free(st);
     }
-    return 1;
 }
 
-int insertInTheQueue(Queue *qu, Student stud){
-    if(qu == NULL)
+int stackUp(Stack *st, Student stud){
+    if(st == NULL)
         return 0;
-
-    Element *node = (Element*) malloc(sizeof(Element));
-
+    Element* node;
+    node = (Element*) malloc(sizeof(Element));
     if(node == NULL)
         return 0;
-
     node->student = stud;
-
-    node->next = NULL;
-
-    if(qu->tail == NULL)//empty queue
-        qu->head = node;
-    else
-        qu->tail->next = node;
-
-    qu->tail = node;
-
-    qu->amount++;
-
+    node->next = (*st);
+    *st = node;
     return 1;
 }

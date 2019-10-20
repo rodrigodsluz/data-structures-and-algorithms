@@ -1,5 +1,5 @@
-#ifndef _QUEUE_
-#define _QUEUE_
+#ifndef _STACK_
+#define _STACK_
 
 typedef struct student{
     char name[30];
@@ -7,13 +7,13 @@ typedef struct student{
     int registration;;
 }Student;
 
-typedef struct element *Stack;
+typedef struct stack Stack;
 
 Stack *createStack();
 
-int freeQueue(Queue *qu);
+int freeStack(Stack *st);
 
-int insertInTheQueue(Queue *qu, Student stud);
+int stackUp(Stack *st, Student stud);
 
 
 #endif

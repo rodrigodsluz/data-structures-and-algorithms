@@ -35,10 +35,10 @@ int main(){
             }
 
             case 2:{
-                ok = freeQueue(qu);
+                ok = freeStack(st);
 
                 if(ok){
-                    printf("Queue deallocated successfully!!!\n");
+                    printf("Stack deallocated successfully!!!\n");
                 }else{
                     printf("Failed!!!\n");
                 }
@@ -48,10 +48,10 @@ int main(){
 
             case 3:{
                 ok = createStudent(&stud);
-                ok = insertInTheQueue(qu, stud);
+                ok = stackUp(st, stud);
 
                 if(ok){
-                    printf("Successful enqueue!!!\n");
+                    printf("Successful stack up!!!\n");
                 }else{
                     printf("Failed!!!\n");
                 }

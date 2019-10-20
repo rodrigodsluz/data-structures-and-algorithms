@@ -11,9 +11,9 @@ typedef struct element *Stack;
 
 Stack *createStack();
 
-int freeQueue(Queue *qu);
+int freeStack(Stack *st);
 
-int insertInTheQueue(Queue *qu, Student stud);
+int stackUp(Stack *st, Student stud);
 
 
 #endif

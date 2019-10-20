@@ -3,7 +3,7 @@
 #include "adt.h"
 #define MAX 100
 
-typedef struct stack{
+struct stack{
     int amount;
     Student student[MAX];
 };
@@ -11,46 +11,30 @@ typedef struct stack{
 
 Stack *createStack(){
     Stack *st = (Stack*)malloc(sizeof(Stack));
-
     if(st != NULL)
-        *st = NULL;
+        st->amount = 0;
     return st;
 }
 
-int freeQueue(Queue *qu){
-    if(qu != NULL){
-        Element *node;
-        while(qu->head != NULL){
-            node = qu->head;
-            qu->head = qu->head->next;
-            free(node);
-        }
-        free(qu);
+int freeStack(Stack *st){
+    if(st == NULL){
+        return 0;
     }
+
+    free(st);
+
     return 1;
 }
 
-int insertInTheQueue(Queue *qu, Student stud){
-    if(qu == NULL)
+int stackUp(Stack *st, Student stud){
+    if(st == NULL)
         return 0;
 
-    Element *node = (Element*) malloc(sizeof(Element));
-
-    if(node == NULL)
+    if(st->amount == MAX)
         return 0;
 
-    node->student = stud;
-
-    node->next = NULL;
-
-    if(qu->tail == NULL)//empty queue
-        qu->head = node;
-    else
-        qu->tail->next = node;
-
-    qu->tail = node;
-
-    qu->amount++;
+    st->student[st->amount] = stud;
+    st->amount++;
 
     return 1;
 }
