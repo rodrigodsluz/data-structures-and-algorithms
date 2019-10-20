@@ -13,17 +13,17 @@ int main(){
     do{
         printf("1 - Create queue\n");
         printf("2 - Free queue\n");
-        printf("3 - Insert element in the queue\n");
+        printf("3 - Enqueue\n");
         printf("4 - Print queue\n");
-        printf("5 - Remove element of the queue\n");
-        printf("6 - Size of queue\n"); //Consult the first element
+        printf("5 - Dequeue\n");
+        printf("6 - Consult the first element\n"); 
         printf("7 - Exit\n");
         printf("Option: ");
         scanf("%d", &choice);
 
         switch(choice){
             case 1:{
-                qu = createList();
+                qu = createQueue();
 
                 if(qu!=NULL){
                     printf("Queue Successfully created!!!\n\n");

@@ -97,13 +97,13 @@ int dequeue(Queue *qu){
     return 1;
 }
 
-int consultFirstElement(Queue *qu){
+int consultFirstElement(Queue *qu, Student *stud){
     if(qu == NULL)
         return 0;
 
     if(qu->head == NULL)//empty queue
         return 0;
 
-    *al = fi->inicio->dados;
+    *stud = qu->head->student;
     return 1;
 }

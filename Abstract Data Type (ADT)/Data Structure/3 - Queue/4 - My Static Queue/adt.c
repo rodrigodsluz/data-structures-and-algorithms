@@ -11,11 +11,11 @@ struct queue{
 Queue *createQueue(){
     Queue *qu = (Queue*) malloc(sizeof(Queue));
     if(qu != NULL){
-        qu->inicio = 0;
-        qu->final = 0;
+        qu->head = 0;
+        qu->tail = 0;
         qu->amount = 0;
     }
-    return fi;
+    return qu;
 }
 
 int freeQueue(Queue *qu){

@@ -19,6 +19,6 @@ int printQueue(Queue *qu);
 
 int dequeue(Queue *qu);
 
-int consultFirstElement(Queue *qu);
+int consultFirstElement(Queue *qu, Student *stud);
 
 #endif

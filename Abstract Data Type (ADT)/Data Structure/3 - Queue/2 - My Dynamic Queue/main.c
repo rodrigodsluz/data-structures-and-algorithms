@@ -82,11 +82,14 @@ int main(){
             }
 
             case 6:{
-                int temp;
+                Student temp;
                 ok = consultFirstElement(qu, &temp);
 
                 if(ok){
-                    printf("The first element of queue is: %d", ok);
+                    printf("The first element of queue is: ");
+                    printf(" %s\n", temp.name); 
+                    printf(" %d\n", temp.registration);
+                    printf(" %d\n", temp.grade);
                     
                 }else{
                     printf("Failed!\n");
