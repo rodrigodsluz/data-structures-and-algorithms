@@ -13,10 +13,10 @@ int main(){
     do{
         printf("1 - Create queue\n");
         printf("2 - Free queue\n");
-        printf("3 - Insert element in the queue\n");
+        printf("3 - Enqueue\n");
         printf("4 - Print queue\n");
-        printf("5 - Remove element of the queue\n");
-        printf("6 - Size of queue\n"); //Consult the first element
+        printf("5 - Dequeue\n");
+        printf("6 - Consult the first element\n"); 
         printf("7 - Exit\n");
         printf("Option: ");
         scanf("%d", &choice);
@@ -60,17 +60,38 @@ int main(){
             }
 
             case 4:{
-                
+                ok = printQueue(qu);
+
+                if(!ok){
+                    printf("Queue not found!\n");
+                }
+
                 break;
             }
 
             case 5:{
-                
+                ok = dequeue(qu);
+
+                if(ok){
+                    printf("Successful dequeue!\n");
+                }else{
+                    printf("Failed!\n");
+                }
+
                 break;
             }
 
             case 6:{
-                
+                int temp;
+                ok = consultFirstElement(qu, &temp);
+
+                if(ok){
+                    printf("The first element of queue is: %d", ok);
+                    
+                }else{
+                    printf("Failed!\n");
+                }
+
                 break;
             }
 

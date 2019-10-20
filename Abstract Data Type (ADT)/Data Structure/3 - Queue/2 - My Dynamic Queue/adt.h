@@ -15,5 +15,10 @@ int freeQueue(Queue *qu);
 
 int insertInTheQueue(Queue *qu, Student stud);
 
+int printQueue(Queue *qu);
+
+int dequeue(Queue *qu);
+
+int consultFirstElement(Queue *qu);
 
 #endif

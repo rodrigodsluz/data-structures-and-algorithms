@@ -9,7 +9,7 @@ typedef struct element{
 
 struct queue{
     struct element *head;
-    struct element *tai;
+    struct element *tail;
     int amount;
 };
 
@@ -60,5 +60,50 @@ int insertInTheQueue(Queue *qu, Student stud){
 
     qu->amount++;
 
+    return 1;
+}
+
+int printQueue(Queue *qu){
+    if(qu == NULL)
+        return 0;
+
+    Element* node = qu->head;
+    while(node != NULL){
+        printf("Registration: %d\n",node->student.registration);
+        printf("Name: %s\n",node->student.name);
+        printf("Grade: %d\n",node->student.grade);
+        printf("-------------------------------\n");
+        node = node->next;
+    }
+
+    return 1;
+}
+
+int dequeue(Queue *qu){
+    if(qu == NULL)
+        return 0;
+
+    if(qu->head == NULL)//empty queue
+        return 0;
+
+    Element *node = qu->head;
+    qu->head = qu->head->next;
+    if(qu->head == NULL)//queue became empty
+        qu->tail = NULL;
+    free(node);
+    qu->amount--;
+
+
+    return 1;
+}
+
+int consultFirstElement(Queue *qu){
+    if(qu == NULL)
+        return 0;
+
+    if(qu->head == NULL)//empty queue
+        return 0;
+
+    *al = fi->inicio->dados;
     return 1;
 }
