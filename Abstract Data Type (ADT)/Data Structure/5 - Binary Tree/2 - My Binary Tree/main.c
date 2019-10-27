@@ -15,7 +15,7 @@ int main(){
         printf("\n\nOptions Menu:");
         printf("\n1 - Create Binary Tree");
         printf("\n2 - Free Binary Tree");
-        printf("\n3 - Inserir nó na árvore binária");
+        printf("\n3 - Insert node in Binary Tree");
         printf("\n4 - Remover nó da árvore binária");
         printf("\n5 - Consultar nó na árvore binária");
         printf("\n6 - Percurso pré-ordem");
@@ -56,16 +56,16 @@ int main(){
 
         case 3:
 
-            // inserir nó na árvore binária  
-            printf("\n Valor a ser inserido: ");
-            scanf("%d", &valor);      
+            // Insert node in Binary Tree  
+            printf("\n Enter the value: ");
+            scanf("%d", &value);      
 
-            ok = inserir_arvore_binaria(raiz, valor);
+            ok = insertNode(root, value);
 
-            if(ok == 1){
-            printf("\n Inserção realizada com sucesso!");
+            if(ok){
+                printf("\n Successful insertion!");
             }else{
-            printf("\n Falha na inserção!");
+                printf("\n Failed!");
             }
 
             break;

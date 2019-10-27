@@ -51,6 +51,63 @@ int freeBinaryTree(BinaryTree *root){
   return 1;
 }
 
+// Function to insert elements in a Binary Search Tree
+int insertNode(BinaryTree *root, int value){
+  if(root == NULL)
+    return 0;
+
+  // Create a node
+  Node *new = (Node*) malloc(sizeof(Node));
+
+  // Verify if the memory was correct allocated
+  if(new == NULL){
+    return 0;
+  }  
+
+  // Fill fields of new created node 
+  new->value = value;
+  new->left = NULL;
+  new->right = NULL;
+
+  // If the tree is empty, root get the new node
+  if(*root == NULL){
+    *root = new;
+
+  }else{
+    Node *current = *root;
+    Node *previous = NULL;
+
+    // travel through the tree until find the NULL position according with the desired order
+    while(current != NULL){
+
+      previous = current;
+
+      // Verify if the value already exists in the tree
+      if(value == current->value){
+        free(new);
+        return 0; 
+      }
+      
+      // Identify which subtree will travel 
+      if(value < current->value){
+        current = current->left;
+      }else{
+        current = current->right;
+      }
+    }
+
+    // Verify for which child will assign the new node
+    if(value < previous->value){
+      previous->left = new;
+    }else{
+      previous->right = new;
+    }
+  }
+
+  return 1;
+
+}
+
 // função calcula o total de nós da arvore binaria
 int quantidade_nos_arvore_binaria(ArvoreBin *raiz)
 {
@@ -98,64 +155,7 @@ int esta_vazia_arvore_binaria(ArvoreBin *raiz)
 }
 
 
-// função para inserção de elementos em uma arvore binaria de busca
-int inserir_arvore_binaria(ArvoreBin *raiz, int valor)
-{
-  if(raiz == NULL)
-    return 0;
 
-  // cria um nó novo
-  No *novo = (No*) malloc(sizeof(No));
-
-  // verifica se a memória foi alocada corretamente
-  if(novo == NULL){
-    return 0;
-  }  
-
-  // preenche campos do nó novo criado
-  novo->valor = valor;
-  novo->esq = NULL;
-  novo->dir = NULL;
-
-  // se a arvore estiver vazia, raiz recebe o novo nó
-  if(*raiz == NULL){
-    *raiz = novo;
-
-  }else{
-    No *atual = *raiz;
-    No *ant = NULL;
-
-    // percorre a arvore binaria até encontrar uma posicao nula,
-    // de acordo com a ordem desejada 
-    while(atual != NULL){
-
-      ant = atual;
-
-      // verifica se o valor novo já existe na árvore
-      if(valor == atual->valor){
-        free(novo);
-        return 0; 
-      }
-      
-      // identifica a subarvore pela qual irá percorrer
-      if(valor < atual->valor){
-        atual = atual->esq;
-      }else{
-        atual = atual->dir;
-      }
-    }
-
-    // verifica para qual filho atribuíra o nó novo
-    if(valor < ant->valor){
-      ant->esq = novo;
-    }else{
-      ant->dir = novo;
-    }
-  }
-
-  return 1;
-
-}
 
 // função para remoção de um nó da arvore binaria de busca
 int remover_no(No *atual)
