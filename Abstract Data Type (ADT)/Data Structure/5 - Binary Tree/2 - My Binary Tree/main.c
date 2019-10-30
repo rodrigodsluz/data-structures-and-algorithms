@@ -143,7 +143,7 @@ int main(){
             break;
         }
 
-    }while(opcao != 11);
+    }while(choice!= 11);
 
   return 0;
 }
