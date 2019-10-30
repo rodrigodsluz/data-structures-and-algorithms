@@ -13,6 +13,9 @@ int freeBinaryTree(BinaryTree *root);
 // Function to insert elements in Binary Tree
 int insertNode(BinaryTree *root, int value);
 
+// Function for remotion of elements of Binary Tree
+int removeNode(BinaryTree *root, int value);
+
 // funções para obter informações da arvore binaria
 int quantidade_nos_arvore_binaria(ArvoreBin *raiz);
 int altura_arvore_binaria(ArvoreBin *raiz);
@@ -20,8 +23,7 @@ int esta_vazia_arvore_binaria(ArvoreBin *raiz);
 
 
 
-// função para remoção de elementos da arvore binaria
-int remover_arvore_binaria(ArvoreBin *raiz, int valor);
+
 
 // função para buscar elementos na arvore binaria
 int consultar_arvore_binaria(ArvoreBin *raiz, int valor);

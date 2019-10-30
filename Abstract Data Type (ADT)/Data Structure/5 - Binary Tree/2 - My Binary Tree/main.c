@@ -16,7 +16,7 @@ int main(){
         printf("\n1 - Create Binary Tree");
         printf("\n2 - Free Binary Tree");
         printf("\n3 - Insert node in Binary Tree");
-        printf("\n4 - Remover nó da árvore binária");
+        printf("\n4 - Remove nodes of Binary Tree");
         printf("\n5 - Consultar nó na árvore binária");
         printf("\n6 - Percurso pré-ordem");
         printf("\n7 - Percurso em-ordem");
@@ -72,16 +72,16 @@ int main(){
 
         case 4:
 
-            // remover nó com determinado valor
-            printf("\n Valor a ser removido: ");
-            scanf("%d", &valor); 
+            // remove node with determined value
+            printf("\n Enter the value to be removed: ");
+            scanf("%d", &value; 
 
-            ok = remover_arvore_binaria(raiz, valor);
+            ok = removeNode(root, value);
 
-            if(ok == 1){
-            printf("\n Remoção realizada com sucesso!");
+            if(ok){
+                printf("\n Successfully remotion!");
             }else{
-            printf("\n Falha na remoção!");
+                printf("\n Failed!");
             }
 
             break;

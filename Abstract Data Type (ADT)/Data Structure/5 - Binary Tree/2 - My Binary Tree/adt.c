@@ -108,6 +108,97 @@ int insertNode(BinaryTree *root, int value){
 
 }
 
+// Function for remotion of root
+int removeRoot(Node *current)
+{
+  Node *node1, *node2;
+
+  // Verify if the current there's no left child 
+  if(current->left == NULL){
+    node2 = current->right;
+    free(current); // Free memory of current node
+
+    // return node2, right child, as subtstitute node of removed node
+    return node2;
+  }
+  
+  node1 = current;
+  node2 = current->left;
+
+  // Search the node rightmost of current node, node2     
+  while(node2->right != NULL){
+    node1 = node2;      // Store the father of node 2
+    node2 = node2->right;
+  }
+
+  // verifica se o pai do nó mais a direita é diferente do atual, a ser removido
+  if(no1 != atual){
+    // subarvore da esquerda do "no2" se torna a subarvore da direita do "no1"
+    no1->dir = no2->esq;
+
+    // subarvore da esquerda do "atual" se torna a subarvore da esquerda do "no2"
+    no2->esq = atual->esq;
+  }
+
+  // subarvore da direita do "atual" se torna a subarvore da direita do "no2"
+  no2->dir = atual->dir;
+
+  free(atual); // libera memória do nó atual
+
+  // retorna "no2" como nó substituto do nó removido
+  return no2;
+}
+
+// Function for remotion of Binary Search Tree elements
+int removeNode(BinaryTree *root, int value){
+    if(root == NULL)
+    return 0;
+
+    Node *previous = NULL;    // father node of current node 
+    Node *current = *root; // current node
+
+    // Walk through the binary tree until find the node to be removed 
+    while(current != NULL){
+
+    // Verify if the searched value was found  
+    if(value == current->value){
+
+      // Verify if the node to be removed is the own root 
+      if(current == *root){
+      *root = removeRoot(current); // remove the root and update the tree 
+
+      }else{
+
+        if(ant->dir == atual){
+          ant->dir = remover_no(atual); // remove o nó e atualiza a arvore
+        }else{
+          ant->esq = remover_no(atual); // remove o nó e atualiza a arvore
+        }   
+             
+      }
+
+      // nó a ser removido foi encontrado e removido corretamente
+      return 1;
+    }
+
+    // se o nó atual não é o nó procurado
+    // "ant" recebe "atual" e "atual" recebe um de seus filhos
+    ant = atual;
+
+    // verifica em qual subarvore o valor procurado pode estar
+    // e atualiza o nó atual para o filho da direita ou da esquerda
+    if(valor > atual->valor){
+      atual = atual->dir;
+    }else{
+      atual = atual->esq;
+    }
+
+  }
+
+  // nó a ser removido não existe na árvore
+  return 0;
+}
+
 // função calcula o total de nós da arvore binaria
 int quantidade_nos_arvore_binaria(ArvoreBin *raiz)
 {
@@ -157,97 +248,9 @@ int esta_vazia_arvore_binaria(ArvoreBin *raiz)
 
 
 
-// função para remoção de um nó da arvore binaria de busca
-int remover_no(No *atual)
-{
-  No *no1, *no2;
 
-  // verifica se "atual" não possui filho da esquerda
-  if(atual->esq == NULL){
-    no2 = atual->dir;
-    free(atual); // libera memória do nó atual
 
-     // retorna "no2", filho da direita, como nó substituto do nó removido
-     return no2;
-  }
-  
-  no1 = atual;
-  no2 = atual->esq;
 
-  // busca o nó mais a direita do nó atual, "no2" 
-  while(no2->dir != NULL){
-    no1 = no2;      // armazena o pai do "no2"
-    no2 = no2->dir;
-  }
-
-  // verifica se o pai do nó mais a direita é diferente do atual, a ser removido
-  if(no1 != atual){
-    // subarvore da esquerda do "no2" se torna a subarvore da direita do "no1"
-    no1->dir = no2->esq;
-
-    // subarvore da esquerda do "atual" se torna a subarvore da esquerda do "no2"
-    no2->esq = atual->esq;
-  }
-
-  // subarvore da direita do "atual" se torna a subarvore da direita do "no2"
-  no2->dir = atual->dir;
-
-  free(atual); // libera memória do nó atual
-
-  // retorna "no2" como nó substituto do nó removido
-  return no2;
-}
-
-// função para remoção de elementos de uma arvore binaria de busca
-int remover_arvore_binaria(ArvoreBin *raiz, int valor)
-{
-  if(raiz == NULL)
-    return 0;
-
-  No *ant = NULL;    // nó pai do nó atual
-  No *atual = *raiz; // nó atual
-
-  // percorre a arvore binaria até encontrar o nó a ser removido
-  while(atual != NULL){
-
-    // verifica se o valor buscado foi encontrado
-    if(valor == atual->valor){
-
-      // verifica se o nó a ser removido é a raiz da árvore
-      if(atual == *raiz){
-        *raiz = remover_no(atual); // remove o nó e atualiza a arvore
-
-      }else{
-
-        if(ant->dir == atual){
-          ant->dir = remover_no(atual); // remove o nó e atualiza a arvore
-        }else{
-          ant->esq = remover_no(atual); // remove o nó e atualiza a arvore
-        }   
-             
-      }
-
-      // nó a ser removido foi encontrado e removido corretamente
-      return 1;
-    }
-
-    // se o nó atual não é o nó procurado
-    // "ant" recebe "atual" e "atual" recebe um de seus filhos
-    ant = atual;
-
-    // verifica em qual subarvore o valor procurado pode estar
-    // e atualiza o nó atual para o filho da direita ou da esquerda
-    if(valor > atual->valor){
-      atual = atual->dir;
-    }else{
-      atual = atual->esq;
-    }
-
-  }
-
-  // nó a ser removido não existe na árvore
-  return 0;
-}
 
 // função para buscar elementos na arvore binaria
 int consultar_arvore_binaria(ArvoreBin *raiz, int valor)
