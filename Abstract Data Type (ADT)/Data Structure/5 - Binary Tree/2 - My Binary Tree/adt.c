@@ -109,7 +109,7 @@ int insertNode(BinaryTree *root, int value){
 }
 
 // Function for remotion of root
-int removeRoot(Node *current)
+int removeFather(Node *current)
 {
   Node *node1, *node2;
 
@@ -165,7 +165,7 @@ int removeNode(BinaryTree *root, int value){
 
       // Verify if the node to be removed is the own root 
       if(current == *root){
-      *root = removeRoot(current); // remove the root and update the tree 
+      *root = removeFather(current); // remove the main father and update the tree 
 
       }else{
 
