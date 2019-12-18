@@ -5,8 +5,3 @@
 *.ini
 /.vscode
 *.out
-*.o 
-*.so
-*.a
-!*.c
-!Makefile
