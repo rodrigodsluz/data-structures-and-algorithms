@@ -3,4 +3,5 @@
 *.ini
 /.vscode
 *.out
-*.main
+*.sh
+*.deb
