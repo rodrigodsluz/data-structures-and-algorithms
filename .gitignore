@@ -5,6 +5,5 @@
 *.ini
 /.vscode
 *.out
-
-#ignore all binary files
-
+*.class
+*.sm
