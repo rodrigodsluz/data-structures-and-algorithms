@@ -1,6 +1,10 @@
+#Rodrigo Stuffs
+
 *.exe
 *.txt
 *.ini
 /.vscode
 *.out
-*
+
+#ignore all binary files
+* 
