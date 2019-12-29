@@ -1,13 +1,11 @@
-#ifndef _INSERTION_SORT_
-#define _INSERTION_SORT_
+#ifndef _SELECTION_SORT_
+#define _SELECTION_SORT_
 
-typedef struct TipoItem{
-    int Chave;
+typedef struct itemType{
+    int key;
     char name[100];
-} TipoItem;
+}itemType;
 
-void insertionSort (TipoItem *A, int n);
-
-
+void selectionSort (itemType *A, int n);
 
 #endif
