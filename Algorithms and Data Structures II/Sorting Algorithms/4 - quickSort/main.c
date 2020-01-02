@@ -30,7 +30,11 @@ int main (int argc, char *argv[])
 
     //getchar(); //system("pause");
 
-    bubbleSort(A, n);
+    quickSort(A, n);
+
+    printf ("\n\nSorted array: \n");
+    for (i=1; i<=n; i++)
+        printf (" %d",A[i].key);
 
     printf("\n\n");
 
