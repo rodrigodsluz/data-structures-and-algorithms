@@ -32,7 +32,7 @@ int main (int argc, char *argv[])
 
     quickSort(A, n);
 
-    printf ("\n\nSorted array: \n");
+    printf ("Sorted array: \n");
     for (i=1; i<=n; i++)
         printf (" %d",A[i].key);
 

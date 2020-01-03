@@ -29,5 +29,5 @@ void sort (int left, int right, itemType *A)
 
 void quickSort(itemType *A, int n)
 {
-    sort(1, n, A);
+    sort(0, n, A);
 }
