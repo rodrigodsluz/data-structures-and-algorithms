@@ -5,14 +5,14 @@
 /*
 Time complexity
 
-Worst case:
+Worst case: 
 O(n²)
 
 average case:
-O(n log n)
+
 
 Best Case:
-O(n log n)
+O(n)
 
 
 */
@@ -33,7 +33,7 @@ int main (int argc, char *argv[])
 
     //getchar(); //system("pause");
 
-    quickSort(A, n);
+    heapSort(A, n);
 
     printf ("Sorted array: \n");
     for (i=1; i<=n; i++)
