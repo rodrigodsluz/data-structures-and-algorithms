@@ -19,30 +19,29 @@ O(n)
 
 int main (int argc, char *argv[])
 {
-    itemType *A;
-    int n = 10, i;
+    int *A;
+    int n=10, i;
 
-    //Why the professor put 2*n?
-    A = calloc(sizeof(itemType), 2*n); //+1 para a sentinela em P[0]
+    A = (int*) malloc(n*sizeof(int));
     printf("\nUnsorted Array: \n");
-    for (i=1; i<=n; i++){
-        A[i].key = rand() % 100;
-        printf (" %d",A[i].key);
+    for (i=0; i<n; i++){
+        A[i] = rand() % 100;
+        printf (" %d",A[i]);
     }
 
     printf("\n\n"); 
 
     //getchar(); //system("pause");
 
-    heapSort(A, n);
+    mergeSort(A, 0, n-1);
 
     printf ("Sorted array: \n");
-    for (i=1; i<=n; i++)
-        printf (" %d",A[i].key);
+    for (i=0; i<n; i++)
+        printf (" %d",A[i]);
 
-    printf("\n\n");
+    printf("\n\n"); 
 
-    //getchar(); //system("pause");
-    
+    //getchar(); //system("pause")
+
     return 0;
 }

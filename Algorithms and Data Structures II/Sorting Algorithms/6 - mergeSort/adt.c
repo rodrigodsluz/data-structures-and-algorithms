@@ -1,47 +1,34 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "adt.h"
+#define MAX 100
 
-void remake(int left, int right, itemType *A)
+void merge(int *A, int left, int mid, int right)
 {
-  int i = left;
-  int j; itemType x;
-  j = i * 2;
-  x = A[i];
-  while (j <= right){
-    if (j < right)
-      if (A[j].key < A[j+1].key) j++;
-    if (x.key >= A[j].key) break;
-    A[i] = A[j];
-    i = j;
-    j = i*2;  
-  }
-  A[i] = x;
+    int aux[MAX];
+    int i=left, j=mid+1, k=0;
+
+    while(i<=mid && j<=right)
+        if(A[i] <= A[j])
+            aux[k++] = A[i++];
+        else
+            aux[k++] = A[j++];
+
+    while(i <= mid)
+        aux[k++] = A[i++];
+    while(j <= right)
+        aux[k++] = A[j++];
+
+    for(i=left, k=0; i<=right; i++, k++)
+        A[i] = aux[k];
 }
 
-void build(itemType *A, int n)
+void mergeSort(int *A, int left, int right)
 {
-  int left;
-  left = n / 2 + 1;
-  while (left > 1){
-    left--;
-    remake(left, n, A);
-  }
-}
-
-void heapSort(itemType *A, int n)
-{
-    int left2, right2;
-    itemType x;
-
-    build(A, n);
-    left2 = 1;
-    right2 = n;
-    while(right2 > 1){
-        x = A[1];
-        A[1] = A[right2];
-        A[right2] = x;
-        right2--;
-        remake(left2, right2, A);
+    int mid = (left + right)/2;
+    if(left < right){
+        mergeSort(A, left, mid);
+        mergeSort(A, mid+1, right);
+        merge(A, left, mid, right);
     }
 }
