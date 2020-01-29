@@ -3,16 +3,57 @@
 using namespace std;
 
 int main(){
-    int n1, n2, x;
+    int A, B, X;
 
-    cout << "Enter the first value: " << endl;
-    scanf("%d", &n1);
+    cin >> A;
 
-    cout << "Enter the second value: " << endl;
-    scanf("%d", &n2);
+    cin >> B;
 
-    x = n1 + n2;
-    cout << "The sum of these number is: " + x << endl;
+    X = A + B;
+    cout << "X = " << X << endl;
 
     return  0;
 }
+
+/*
+    URI Online Judge | 1001
+Extremely Basic
+Adapted by Neilor Tonin, URI  Brazil
+
+Timelimit: 1
+Read 2 variables, named A and B and make the sum of these two variables, assigning its result to the variable X. Print X as shown below. Print endline after the result otherwise you will get “Presentation Error”.
+
+Input
+The input file will contain 2 integer numbers.
+
+Output
+Print the letter X (uppercase) with a blank space before and after the equal signal followed by the value of X, according to the following example.
+
+Obs.: don't forget the endline after all.
+
+Samples Input	Samples Output
+10
+9
+
+X = 19
+
+-10
+4
+
+X = -6
+
+15
+-7
+
+X = 8
+
+*/
+
+double n = 3.14159;
+    double R = 0;
+
+    cin >> R; 
+
+    double A = n * (R*R);
+
+    cout << "A=.2f" << A << endl;
