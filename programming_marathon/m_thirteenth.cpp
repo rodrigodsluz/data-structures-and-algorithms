@@ -4,10 +4,10 @@
 
 using namespace std;
 
-int greaterXY(int x, int y, int z){
+int greaterXY(int x, int y){
     int gre = 0;
 
-    gre =  (x + y + abs(x - y)) / 2;
+    gre =  ((x + y + abs(x - y)) / 2);
 
     return gre;
 }
@@ -17,10 +17,16 @@ int main(){
 
     cin >> a >> b >> c;
 
-    greater = greaterXY(a, b, c);
+    greater = greaterXY(a, b);
+
+    if(greater > c){
+        cout << greater << " eh o maior" << endl; 
+    }else{
+        cout << c << " eh o maior" << endl; 
+    }
 
 
-    cout << greater << " eh o maior" << endl; 
+    
 
 
     return  0;
