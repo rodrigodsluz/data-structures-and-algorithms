@@ -12,13 +12,30 @@
 
 using namespace std;
 
+double projected_rates(const double ch, const double in)
+{
+    double membership[]{};
 
+    for (int i{0}; i < 6; i++)
+    {
+        membership[i] += (ch * 1.04);
+    }
 
-int main(){
-    double membership{0};
+    return membership;
+}
 
-    projected_rates(membership);
+int main()
+{
+    const double charge{2.5};
+    const double increase_fees{0.04};
 
+    double result{0};
+
+    result = projected_rates(charge, increase_fees);
+
+    for(int i{0}; i<6; i++){
+        cout << result[i] << endl;
+    }
 
     return 0;
 }
