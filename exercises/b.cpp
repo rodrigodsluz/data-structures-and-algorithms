@@ -14,7 +14,7 @@ using namespace std;
 
 double projected_rates(const double ch, const double in)
 {
-    double membership[]{};
+    double *membership{};
 
     for (int i{0}; i < 6; i++)
     {
@@ -29,7 +29,7 @@ int main()
     const double charge{2.5};
     const double increase_fees{0.04};
 
-    double result{0};
+    double *result{0};
 
     result = projected_rates(charge, increase_fees);
 
