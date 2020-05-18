@@ -4,7 +4,7 @@
 
 typedef struct champion
 {
-    char *name;
+    char name[100];
     int tier;
 } champion;
 
@@ -17,20 +17,22 @@ int main()
     scanf("%d", &n);
     champion *P = (champion *)calloc(n, sizeof(champion));
 
+    printf("\n---------INPUT---------\n\n");
+
     for (int i = 0; i < n; i++)
     {
         //scanf(" %[^\n]", P[i].name);
         //P[i].name[strlen(P[i].name) - 1] = '\0';
-        scanf("%d", &(P[i].tier));
+        scanf(" %[^ ] %d", P[i].name, &(P[i].tier));
     }
 
     selection(P, n);
 
+    printf("\n--------OUTPUT---------\n\n");
+
     for (int i = 0; i < n; i++)
     {
-        //     printf("%s %d\n", P[i].name, P[i].tier);
-
-        printf("%d\n", P[i].tier);
+        printf("%s %d\n", P[i].name, P[i].tier);
     }
 
     return 0;
