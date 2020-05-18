@@ -28,7 +28,7 @@ int main()
 
     selection(P, n);
 
-    printf("\n--------OUTPUT---------\n\n");
+    printf("\n---------OUTPUT---------\n\n");
 
     for (int i = 0; i < n; i++)
     {
