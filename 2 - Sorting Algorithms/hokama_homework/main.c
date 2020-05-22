@@ -25,8 +25,8 @@ int main()
     for (int i = 0; i < n; i++)
     {
         //Aloca espaço na memória para cada nome
-        C[i].name = (char *)malloc(50);
-        scanf(" %s %d", C[i].name, &(C[i].tier));
+        C[i].name = (char *)calloc(50, sizeof(char));
+        scanf("%s %d", C[i].name, &(C[i].tier));
     }
 
     //Chamada da função para ordenar os números em estratos e os nomes entre eles em ordem alfabética
@@ -54,9 +54,9 @@ void selectionSort(champion *C, int n)
 {
     int i = 0, j = 0, menor = 0;
     champion x;
-
-    //Alocando espaço na memória para o struct temporário
-    champion *temp = (champion *)calloc(n, sizeof(champion));
+    champion *temp;
+    //Alocando espaço na memória para o array temporário
+    temp->name = (char *)calloc(50, sizeof(char));
 
     for (i = 0; i < n - 1; i++)
     {
@@ -91,5 +91,5 @@ void selectionSort(champion *C, int n)
     }
 
     //Libera espaço alocado na memória
-    free(temp);
+    free(temp->name);
 }

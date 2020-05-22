@@ -1,0 +1,12 @@
+{
+  "folders": [
+    {
+      "path": "data_structures_in_c"
+    }
+  ],
+  "settings": {
+    "files.associations": {
+      "typeinfo": "c"
+    }
+  }
+}
