@@ -5,7 +5,7 @@
 //Definição do struct
 typedef struct champion
 {
-    char name[100];
+    char *name;
     int tier;
 } champion;
 
@@ -24,8 +24,9 @@ int main()
     //Pegar dados do usuário (um nome sem espaços e um inteiro)
     for (int i = 0; i < n; i++)
     {
-        //Esse scanf é utilizado por maratonistas de programação, nesse caso ele pega todos os caracteres fornecidos pelo usuário até o caractere de espaço aparecer.
-        scanf(" %[^ ] %d", C[i].name, &(C[i].tier));
+        //Aloca espaço na memória para cada nome
+        C[i].name = (char *)malloc(50);
+        scanf(" %s %d", C[i].name, &(C[i].tier));
     }
 
     //Chamada da função para ordenar os números em estratos e os nomes entre eles em ordem alfabética
@@ -39,6 +40,11 @@ int main()
 
     //Libera espaço alocado na memória
     free(C);
+
+    for (int i = 0; i < n; i++)
+    {
+        free(C[i].name);
+    }
 
     return 0;
 }
@@ -66,12 +72,14 @@ void selectionSort(champion *C, int n)
             //Ordena os nomes que estão entre cada estrato em ordem alfabética
             if (C[j].tier == C[menor].tier)
             {
-                //Se o nome do personagem que está em determinado estrato for alfabeticamente maior que o próximo será retornado uma valor > 0
+                //Se o nome do personagem do primeiro parâmetro for alfabeticamente maior que o do segundo parâmetro será retornado uma valor > 0. Nesse caso, o nome com índice de menor valor será alfabeticamente maior do que o nome que possui índice superior. Por isso, será preciso trocá-los de lugar.
                 if (strcmp(C[menor].name, C[j].name) > 0)
                 {
-                    //Essa função copia o valor da variável do segundo parâmetro para a variável do primeiro. E com a ajuda da variável temporária é possível ordenar alfabeticamente
+                    //Essa função copia o valor da variável do segundo parâmetro para a variável do primeiro. E com a ajuda da variável temporária é possível ordenar alfabeticamente. Na primeira linha a variável temp recebe o nome que possui valor alfabeticamente menor
                     strcpy(temp->name, C[j].name);
+                    //Nessa segunda linha o nome que possui valor alfabético maior será copiado para C[j]
                     strcpy(C[j].name, C[menor].name);
+                    //E finalmente, o nome que estava na varíavel temp será copiada para C[menor], ordenando tudo
                     strcpy(C[menor].name, temp->name);
                 }
             }
