@@ -19,9 +19,15 @@ typedef struct champion
 //Protótipos
 void randomizedQuickSort(champion *C, int n);
 
-void ordena(int esq, int dir, champion *C);
+void ordenar(int esq, int dir, champion *C);
 
-void particao(int esq, int dir, int *i, int *j, champion *C);
+int particaoTier(champion *C, int start, int end, int subvet);
+
+int particaoChampionName(champion *C, int start, int end);
+
+void quickSortTier(champion *C, int start, int end, int subve);
+
+void quickSortChampionName(champion *C, int start, int end);
 
 int main()
 {
@@ -44,7 +50,6 @@ int main()
     randomizedQuickSort(C, n);
 
     //Imprimindo os valores de saída ordenados
-    printf("\n\n--------OUTPUT--------\n");
     for (int i = 0; i < n; i++)
     {
         printf("%s %d\n", C[i].name, C[i].tier);
@@ -62,100 +67,177 @@ int main()
     return 0;
 }
 
-//Implementação da função de ordenação por seleção
-
-void particao(int esq, int dir, int *i, int *j, champion *C)
-{
-    srand(time(NULL));
-    champion x, w;
-    *i = esq;
-    *j = dir;
-    x = C[(*i + *j) / 2]; //obtem o pivô
-    int a = 0;
-
-    //x.tier = (rand() % 6) + 1;
-    printf("%d", x);
-    for (int r = *i; r < x.tier; r++)
-    {
-        a++;
-        if (a == 5)
-        {
-            x.tier = (rand() % 6) + 1;
-            printf("%d", x.tier);
-        }
-    }
-    /* for (int r = *i; r < *j; r++)
-    {
-        if (x.tier == C[1].tier)
-        {
-            x = C[(*i + *j) / 2];
-        }
-    } */
-
-    do
-    {
-        while (x.tier > C[*i].tier)
-            (*i)++;
-
-        while (x.tier < C[*j].tier)
-            (*j)--;
-
-        if (*i <= *j)
-        {
-            w = C[*i];
-            C[*i] = C[*j];
-            C[*j] = w;
-            (*i)++;
-            (*j)--;
-        }
-
-    } while (*i < *j);
-}
-
-void ordena(int esq, int dir, champion *C)
-{
-    int i = 0, j = 0;
-    char temp[50];
-
-    particao(esq, dir, &i, &j, C);
-
-    if (esq < j)
-    {
-        ordena(esq, j, C);
-    }
-    if (i < dir)
-    {
-        ordena(i, dir, C);
-    }
-
-    for (int k = 0; k < dir; k++)
-    {
-        if (C[k].tier == C[k + 1].tier)
-        {
-
-            if (strcmp(C[k].name, C[k + 1].name) > 0)
-            {
-
-                strcpy(temp, C[k].name);
-                strcpy(C[k].name, C[k + 1].name);
-                strcpy(C[k + 1].name, temp);
-            }
-        }
-    }
-}
-
+//Implementação das funções
 void randomizedQuickSort(champion *C, int n)
 {
-    ordena(0, n - 1, C);
+    ordenar(0, n, C);
 }
 
-//Se o nome do personagem do primeiro parâmetro for alfabeticamente maior que o do segundo parâmetro será retornado uma valor > 0. Nesse caso, o nome com índice de j valor será alfabeticamente maior do que o nome que possui índice superior. Por isso, será preciso trocá-los de lugar.
-/* if (strcmp(C[j].name, C[j].name) > 0)
-                {
-                    //Essa função copia o valor da variável do segundo parâmetro para a variável do primeiro. E com a ajuda da variável temporária é possível ordenar alfabeticamente. Na primeira linha a variável temp recebe o nome que possui valor alfabeticamente j
-                    strcpy(temp, C[j].name);
-                    //Nessa segunda linha o nome que possui valor alfabético maior será copiado para C[j]
-                    strcpy(C[j].name, C[j].name);
-                    //E finalmente, o nome que estava na varíavel temp será copiada para C[j], ordenando tudo
-                    strcpy(C[j].name, temp);
-                } */
+void ordenar(int start, int end, champion *C)
+{
+
+    //ordena por número de tier
+    quickSortTier(C, start, end, 0);
+
+    //ordenar por nome do campẽo
+    int tier_cont = C[0].tier, comeco = 0;
+
+    for (int i = 0; i <= end; i++)
+    {
+        //procura posição em que muda o tier
+        if (C[i].tier != tier_cont)
+        {
+            /* Devido ao tier trocar, encontra-se a posição final do tier atribuido ao tier_cont
+            captura então o começo e o final do tier na lista
+            como parametro é passado i-1 e começo, que representam a posição final e inicial do tier */
+            quickSortChampionName(C, comeco, i - 1);
+            //start recebe a posição inicial do novo tier
+            comeco = i;
+            //tier_cont pega o novo tier
+            tier_cont = C[i].tier;
+        }
+    }
+}
+
+int particaoTier(champion *C, int start, int end, int subvet)
+{
+
+    //tamanho vetor control
+    int control = (end - start) + 1;
+    int posicao = 0;
+    int esq = 0, dir = 0;
+    //srand para não repetir valores
+    srand(time(NULL));
+
+    champion pivo, temp;
+    pivo = C[start];
+    esq = start;
+    dir = end;
+
+    if (subvet)
+    {
+        //aleatório
+        if (control <= 5)
+            posicao = start + (rand() % (control));
+        //mediana das posições
+        else
+            posicao = ((start + (rand() % (control))) + (start + (rand() % (control))) + (start + (rand() % (control)))) / 3;
+
+        //por a posição aleatória escolhida, na posição de pivo
+        temp = C[start];
+        C[start] = C[posicao];
+        C[posicao] = temp;
+        pivo = C[start];
+    }
+
+    while (esq < dir)
+    {
+        // Vai pra posição da esquerda até encontrar numero maior que o pivo
+        while (C[esq].tier <= pivo.tier)
+            esq++;
+
+        // Volta a posição da direita até encontrar numero menor que o pivo
+        while (C[dir].tier > pivo.tier)
+            dir--;
+
+        // Muda esq e dir
+        if (esq < dir)
+        {
+            temp = C[esq];
+            C[esq] = C[dir];
+            C[dir] = temp;
+        }
+    }
+    C[start] = C[dir];
+    C[dir] = pivo;
+    //retorna a posição do pivo escolhido
+    return dir;
+}
+
+int particaoChampionName(champion *C, int start, int end)
+{
+    int esq, dir, posicao;
+    //Encontra tamanho do vetor
+    int control = (end - start) + 1;
+    champion pivo, temp;
+    esq = start;
+    dir = end;
+    pivo = C[start];
+
+    //posição aleatoria
+    if (control <= 5)
+        posicao = start + (rand() % (control));
+    //mediana das 3 posições
+    else
+        posicao = ((start + (rand() % (control))) + (start + (rand() % (control))) + (start + (rand() % (control)))) / 3;
+
+    //posiciona a posição aleatória escolhida, na posição de pivo
+    temp = C[start];
+    C[start] = C[posicao];
+    C[posicao] = temp;
+    pivo = C[start];
+    pivo = C[start];
+
+    while (esq < dir)
+    {
+        // Vai pra posição da esquerda até encontrar numero maior que o pivo
+        while (strcmp(C[esq].name, pivo.name) <= 0)
+        {
+            esq++;
+            if (esq == end)
+                break;
+        }
+        // Volta a posição da direita até encontrar numero menor que o pivo
+        while (strcmp(C[dir].name, pivo.name) > 0)
+        {
+            dir--;
+            if (dir == start)
+                break;
+        }
+        //Muda esq e dir
+        if (esq < dir)
+        {
+            temp = C[esq];
+            C[esq] = C[dir];
+            C[dir] = temp;
+        }
+    }
+
+    C[start] = C[dir];
+    C[dir] = pivo;
+    //retorna a posição do pivo
+    return dir;
+}
+
+void quickSortTier(champion *C, int start, int end, int subve)
+{
+    //subvet controla subvetores
+    int pivo = 0, subvet = subve;
+
+    //ordenar por número de tier
+    if (end > start)
+    {
+        //separa os dados em 2 partições
+        pivo = particaoTier(C, start, end, subvet);
+        subvet = 1;
+        //Primeira metade
+        quickSortTier(C, start, pivo - 1, subvet);
+        //Segunda metade
+        quickSortTier(C, pivo + 1, end, subvet);
+    }
+}
+
+void quickSortChampionName(champion *C, int start, int end)
+{
+    int pivo;
+    //ordenar por nome de campeo
+    if (end > start)
+    {
+        //separa os dados em 2 partições
+        pivo = particaoChampionName(C, start, end);
+        //Primeira metade
+        quickSortChampionName(C, start, pivo - 1);
+        //Segunda metade
+        quickSortChampionName(C, pivo + 1, end);
+    }
+}
