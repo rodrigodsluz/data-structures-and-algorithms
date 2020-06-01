@@ -19,7 +19,9 @@ typedef struct champion
 //Protótipos
 void mergeSort(champion *C, int esq, int dir);
 
-void merge(champion *C, int esq, int mid, int dir);
+void mergeTier(champion *C, int esq, int mid, int dir);
+
+void mergeChampionName(champion *C, int esq, int mid, int dir);
 
 int main()
 {
@@ -66,13 +68,15 @@ void mergeSort(champion *C, int esq, int dir)
     {
         mergeSort(C, esq, mid);
         mergeSort(C, mid + 1, dir);
-        merge(C, esq, mid, dir);
+        mergeTier(C, esq, mid, dir);
+        mergeChampionName(C, esq, mid, dir);
     }
 }
 
-/* void merge(champion *C, int esq, int mid, int dir)
+void mergeTier(champion *C, int esq, int mid, int dir)
 {
     int aux[MAX];
+    char temp[MAX];
     int i = esq, j = mid + 1, k = 0;
 
     while (i <= mid && j <= dir)
@@ -93,38 +97,40 @@ void mergeSort(champion *C, int esq, int dir)
     for (i = esq, k = 0; i <= dir; i++, k++)
         C[i].tier = aux[k];
 }
- */
 
-void merge(champion *C, int esq, int mid, int dir)
+void mergeChampionName(champion *C, int esq, int mid, int dir)
 {
-    char aux[MAX];
-    //char temp[MAX];
-    int i = esq, j = mid + 1, k = 0;
+    int nL = mid - esq + 1;
+    int nR = dir - mid;
 
-    while (i <= mid && j <= dir)
-        if (C[i].tier == C[j].tier)
-        {
+    char **L = malloc(sizeof(char *) * nL);
+    char **R = malloc(sizeof(char *) * nR);
+    int i;
+    for (i = 0; i < nL; i++)
+    {
+        L[i] = malloc(sizeof(C[esq + i]));
+        strcpy(L[i], C[esq + i].name);
+    }
+    for (i = 0; i < nR; i++)
+    {
 
-            if (strcmp(C[i].name, C[j].name) > 0)
-            {
+        R[i] = malloc(sizeof(C[mid + i + 1]));
+        strcpy(R[i], C[mid + i + 1].name);
+    }
+    int j = 0, k;
+    i = 0;
+    k = esq;
+    while (i < nL && j < nR)
+    {
+        if (strcmp(L[i], R[j]) < 0)
+            strcpy(C[k++].name, L[i++]);
 
-                aux[k++] = C[i++].name;
-
-                //strcpy(temp, C[i].name);
-                //strcpy(C[i].name, C[j].name);
-                //strcpy(C[j].name, temp);
-            }
-        }
         else
-        {
-            aux[k++] = C[j++].name;
-        }
+            strcpy(C[k++].name, R[j++]);
+    }
 
-    while (i <= mid)
-        aux[k++] = C[i++].name;
-    while (j <= dir)
-        aux[k++] = C[j++].name;
-
-    for (i = esq, k = 0; i <= dir; i++, k++)
-        C[i].name = aux[k];
+    while (i < nL)
+        strcpy(C[k++].name, L[i++]);
+    while (j < nR)
+        strcpy(C[k++].name, R[j++]);
 }
