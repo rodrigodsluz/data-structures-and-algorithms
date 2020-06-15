@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define MAX 100
+#define MAX 1000
 
 //Definição do struct
 typedef struct champion
@@ -23,9 +23,7 @@ int min(int x, int y);
 
 void mergeTier(champion *C, int esq, int mid, int dir);
 
-void mergeChampionName(char meAjuda[], int esq, int mid, int dir);
-
-void separateTiers(champion *C, int dir);
+void mergeChampionName(champion *C, int esq, int mid, int dir);
 
 int main()
 {
@@ -47,42 +45,21 @@ int main()
     //Chamada da função para ordenar os números em estratos e os nomes entre eles em ordem alfabética
     mergeSort(C, 0, n - 1);
 
-    // int tier_cont = C[0].tier, comeco = 0;
-
-    // for (int i = 0; i <= n; i++)
-    // {
-    //     //procura posição em que muda o tier
-    //     if (C[i].tier != tier_cont)
-    //     {
-    //         /* Devido ao tier trocar, encontra-se a posição final do tier atribuido ao tier_cont
-    //         captura então o começo e o final do tier na lista
-    //         como parametro é passado i-1 e começo, que representam a posição final e inicial do tier */
-    //         mergeChampionName(C, 0, n / 2, n);
-    //         //start recebe a posição inicial do novo tier
-    //         comeco = i;
-    //         //tier_cont pega o novo tier
-    //         tier_cont = C[i].tier;
-    //     }
-    // }
-
-    /*  int inicioSubvetor = 0;
-    int cont = 0;
-    champion subVetor[MAX];
-
-    for (int i = 0; i < n; i++)
+    char temp[MAX];
+    for (int k = 0; k < n; k++)
     {
-        for (int j = 0; j < n; j++)
+        if (C[k].tier == C[k + 1].tier)
         {
-            inicioSubvetor = i;
-            if (C[i].tier == C[j].tier)
+
+            if (strcmp(C[k].name, C[k + 1].name) > 0)
             {
-                subVetor[cont] = C[j];
-                cont++;
+
+                strcpy(temp, C[k].name);
+                strcpy(C[k].name, C[k + 1].name);
+                strcpy(C[k + 1].name, temp);
             }
         }
-        mergeChampionName(subVetor, inicioSubvetor, (cont / 2), cont);
-        cont = 0;
-    } */
+    }
 
     //Imprimindo os valores de saída ordenados
     for (int i = 0; i < n; i++)
@@ -90,12 +67,6 @@ int main()
         printf("%s %d\n", C[i].name, C[i].tier);
     }
 
-    separateTiers(C, n - 1);
-
-    for (int i = 0; i < n; i++)
-    {
-        printf("%s %d\n", C[i].name, C[i].tier);
-    }
     //Libera espaço alocado na memória
 
     for (int i = 0; i < n; i++)
@@ -160,47 +131,63 @@ void mergeSort(champion *C, int esq, int dir)
 void mergeTier(champion *C, int esq, int mid, int dir)
 {
     int aux[MAX];
+    char **L = malloc(sizeof(char *) * MAX);
     int i = esq, j = mid + 1, k = 0;
 
     while (i <= mid && j <= dir)
         if (C[i].tier <= C[j].tier)
         {
             aux[k++] = C[i++].tier;
+
+            L[i] = malloc(sizeof(C[MAX]));
+            strcpy(L[k++], C[i++].name);
         }
         else
         {
             aux[k++] = C[j++].tier;
+            L[i] = malloc(sizeof(C[MAX]));
+            strcpy(L[k++], C[j++].name);
         }
 
     while (i <= mid)
+    {
         aux[k++] = C[i++].tier;
+        L[i] = malloc(sizeof(C[MAX]));
+        strcpy(L[k++], C[i++].name);
+    }
     while (j <= dir)
+    {
         aux[k++] = C[j++].tier;
+        L[i] = malloc(sizeof(C[MAX]));
+        strcpy(L[k++], C[j++].name);
+    }
 
     for (i = esq, k = 0; i <= dir; i++, k++)
+    {
         C[i].tier = aux[k];
+        L[i] = malloc(sizeof(C[MAX]));
+        strcpy(L[i], C[k].name);
+    }
 }
 
-void mergeChampionName(char meAjuda[], int esq, int mid, int dir)
+void mergeChampionName(champion *C, int esq, int mid, int dir)
 {
     int nL = mid - esq + 1;
     int nR = dir - mid;
 
-    //char **L = malloc(sizeof(char *) * nL);
-    //char **R = malloc(sizeof(char *) * nR);
-    char L[MAX];
-    char R[MAX];
+    char **L = malloc(sizeof(char *) * nL);
+    char **R = malloc(sizeof(char *) * nR);
     int i;
     for (i = 0; i < nL; i++)
     {
-        //L[i] = malloc(sizeof(meAjuda[esq + i]));
-        strcpy(L[i], meAjuda[esq + i]);
+        L[i] = malloc(sizeof(C[esq + i]));
+        strcpy(L[i], C[esq + i].name);
     }
     for (i = 0; i < nR; i++)
     {
 
-        //R[i] = malloc(sizeof(C[mid + i + 1]));
-        strcpy(R[i], meAjuda[mid + i + 1]);
+        R[i] = malloc(sizeof(C[mid + i + 1]));
+        strcpy(R[i], C[mid + i + 1].name);
     }
     int j = 0, k;
     i = 0;
@@ -208,44 +195,14 @@ void mergeChampionName(char meAjuda[], int esq, int mid, int dir)
     while (i < nL && j < nR)
     {
         if (strcmp(L[i], R[j]) < 0)
-            strcpy(meAjuda[k++], L[i++]);
+            strcpy(C[k++].name, L[i++]);
 
         else
-            strcpy(meAjuda[k++], R[j++]);
+            strcpy(C[k++].name, R[j++]);
     }
 
     while (i < nL)
-        strcpy(meAjuda[k++], L[i++]);
+        strcpy(C[k++].name, L[i++]);
     while (j < nR)
-        strcpy(meAjuda[k++], R[j++]);
-}
-
-void separateTiers(champion *C, int dir)
-{
-    int help[MAX];
-    char socorro[MAX];
-    for (int k = 0; k <= dir; k++)
-    {
-        help[k] = C[k].tier;
-        printf("%d\n", help[k]);
-    }
-
-    int ajuda = C[0].tier;
-
-    int left = 0, right = 0, meio = 0;
-    for (int i = 0; i <= dir; i++)
-    {
-        if (ajuda == help[i])
-        {
-            socorro[i] = help[i];
-            printf("A\n");
-            right++;
-        }
-    }
-    ajuda = right;
-    printf("%d\n", right);
-
-    //printf("%d", ajuda);
-    meio = right / 2;
-    mergeChampionName(socorro, left, meio, right);
+        strcpy(C[k++].name, R[j++]);
 }
