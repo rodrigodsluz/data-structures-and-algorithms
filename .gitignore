@@ -4,7 +4,7 @@
 *.ini
 /.vscode
 *.out
-
+*.code-workspace
 
 # Prerequisites
 *.d
